@@ -1,0 +1,35 @@
+profile_id: MID_SIZE_UNIVERSAL
+profile_version: 1.0.0
+description: Vollständige synthetische mittelständische Universalbank mit KSA, IRB, CCR, CVA, Verbriefung, Markt, OpRisk, IRRBB und ICAAP.
+base_as_of_date: 2026-08-31
+default_dataset_version: v1.0.0
+default_seed: 5752026
+source_inputs: daten/referenzprofile/MID_SIZE_UNIVERSAL/inputs
+integrity_manifest: daten/referenzprofile/MID_SIZE_UNIVERSAL/profile_manifest.json
+regulatory_config: daten/konfiguration/regulatory/crr3_eu_2026_v1.yaml
+date_shift_policy: SHIFT_ALL_DATE_FIELDS
+seed_policy: MANIFEST_ONLY_IMMUTABLE_REFERENCE
+shift_columns:
+  date:
+    - as_of_date
+    - valid_from
+    - valid_to
+    - start_date
+    - maturity_date
+    - npe_classification_date
+    - valuation_date
+    - event_date
+    - booking_date
+    - issue_date
+    - next_repricing_date
+    - payment_date
+    - repricing_date
+    - validation_date
+    - legal_opinion_date
+  datetime:
+    - known_from
+    - known_to
+    - approved_at
+  immutable_date_columns:
+    - publication_date
+    - application_date

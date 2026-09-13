@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "reporting_date": "2026-08-31",
+  "distribution_policy": "metadata-only",
+  "sources": [
+    {
+      "source_id": "CRR-CONS-2026",
+      "title": "Regulation (EU) No 575/2013, consolidated version of 26 June 2026 (German)",
+      "issuer": "European Union",
+      "official_url": "https://eur-lex.europa.eu/eli/reg/2013/575/2026-06-26/deu/pdf",
+      "archival_name": "CRR_konsolidiert_2026-06-26_DE.pdf",
+      "archival_sha256": "dad58b4043f9b727e95abb933ee6941dffbf7774f3a0df28692559fc535ac0cf",
+      "retrieved_at": "2026-08-31",
+      "redistributed": false
+    },
+    {
+      "source_id": "CRD-CONS-2026",
+      "title": "Directive 2013/36/EU, consolidated version of 11 July 2026 (German)",
+      "issuer": "European Union",
+      "official_url": "https://eur-lex.europa.eu/eli/dir/2013/36/2026-07-11/deu/pdf",
+      "archival_name": "CRD_konsolidiert_2026-07-11_DE.pdf",
+      "archival_sha256": "ada220fba90f199c683c7b948481a69d2cfd9e725dd4263bcd61b103eb93e43a",
+      "retrieved_at": "2026-08-31",
+      "redistributed": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "profile_id": "MID_SIZE_UNIVERSAL",
+  "profile_version": "1.0.0",
+  "as_of_date": "2026-08-31",
+  "sha256": {
+    "RWA_IN_00_Run_Control.xlsx": "b978e8830fa7a68ddbfce55ae97f1c9863270e155b26e0368ad149e1e4dc19ea",
+    "RWA_IN_01_Entities_Scopes.xlsx": "d8c9b23f5ae0e7eb807a07c1cf6c30aaa56daf033682ee61badf466ff4719021",
+    "RWA_IN_02_Parties_Ratings.xlsx": "8c5e901e4080e8930e17fedbe976acf857ad5851df871e4fc771aba35eda3013",
+    "RWA_IN_03_Accounting.xlsx": "ca2f0eaef7776644c754a15391d493b92313770a35e04f3cd888205067441fba",
+    "RWA_IN_04_Credit_Exposures.xlsx": "25e505c18043cc0d419d2057ff433148f189beee53ada66dcc94cc0dced580ab",
+    "RWA_IN_05_Collateral_CRM.xlsx": "b902e062204feb5205f8e6f86eb656ca77c402f3c25fc1b1b641c4866e54111f",
+    "RWA_IN_06_CCR_CVA_CCP.xlsx": "7c1f2a1924d8f1a84ce12a05db3a91a4852fbcedcb44eabb2dd2a1c3d17eefce",
+    "RWA_IN_07_Securitisations.xlsx": "b27a0f5ece03e9c98ffaf13d682d746184f63a47a526b698dd968de1e139bdab",
+    "RWA_IN_08_Market_Risk.xlsx": "07051bcca245664260f9e33a04e02273c15658606deb542385f3781923d3c3e8",
+    "RWA_IN_09_Operational_Risk.xlsx": "78a5c9b8444a77d87d460da78c8f281b011328347f1303b268ad62faaf4efcf9",
+    "RWA_IN_10_Own_Funds_Reqs.xlsx": "2d7fbdb53f15ee393ab8a7873d92e41dde8d4992ab0878fda7a6fa18b37fc4df",
+    "RWA_IN_11_IRRBB.xlsx": "286f2c922504117b3d0e3fd049007cb4f384202e8bae854b48107a0eee40f64c",
+    "RWA_IN_12_ICAAP_Scenarios.xlsx": "33e1422513a5952d973238ece2e98eb297745a21656144c27160df5d1188fe7a",
+    "RWA_IN_13_Market_Data.xlsx": "129c755e9950088e8e7a55ad0cdbe697e7f9de12fe21735f6b52b68249771ef6",
+    "RWA_IN_14_Rules_Parameters.xlsx": "38654e4adb70636581cab8811761db1c87f648bcc93e695b9f9deff155ed80fd",
+    "RWA_IN_15_Bank_Mappings.xlsx": "0443e0c7529ab6e0268c77aac1197dc3da2ec4fede6ffb633531af15eb30953b"
+  }
+}

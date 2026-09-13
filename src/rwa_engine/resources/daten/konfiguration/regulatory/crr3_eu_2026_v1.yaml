@@ -1,0 +1,350 @@
+metadata:
+  rule_set_id: CRR3-EU-2026
+  version: 1.0.0
+  jurisdiction: EU-DE
+  effective_from: 2026-01-01
+  source_manifest: docs/REGULATORY_SOURCES.md
+
+# Fachwerte werden als lange, dimensionierte Tabelle in
+# RWA_IN_14_Rules_Parameters.xlsx materialisiert. Die Python-Engine enthält
+# bewusst keine regulatorischen Tabellen oder Schwellenwerte.
+parameters:
+  - {key: SA_CCF, d1: CLASS_1, value: 1.00, unit: RATE, ref: CRR Art. 111 / Annex I}
+  - {key: SA_CCF, d1: CLASS_2, value: 0.50, unit: RATE, ref: CRR Art. 111 / Annex I}
+  - {key: SA_CCF, d1: CLASS_3, value: 0.40, unit: RATE, ref: CRR Art. 111 / Annex I}
+  - {key: SA_CCF, d1: CLASS_4, value: 0.20, unit: RATE, ref: CRR Art. 111 / Annex I}
+  - {key: SA_CCF, d1: CLASS_5, value: 0.10, unit: RATE, ref: CRR Art. 111 / Annex I}
+
+  - {key: SA_RW, d1: CENTRAL_GOVERNMENT, d2: CQS_1, value: 0.00, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: CENTRAL_GOVERNMENT, d2: CQS_2, value: 0.20, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: CENTRAL_GOVERNMENT, d2: CQS_3, value: 0.50, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: CENTRAL_GOVERNMENT, d2: CQS_4, value: 1.00, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: CENTRAL_GOVERNMENT, d2: CQS_5, value: 1.00, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: CENTRAL_GOVERNMENT, d2: CQS_6, value: 1.50, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: CENTRAL_GOVERNMENT, d2: UNRATED, value: 1.00, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: RGLA_PSE, d2: CQS_1, value: 0.20, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: RGLA_PSE, d2: CQS_2, value: 0.50, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: RGLA_PSE, d2: CQS_3, value: 0.50, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: RGLA_PSE, d2: CQS_4, value: 1.00, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: RGLA_PSE, d2: CQS_5, value: 1.00, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: RGLA_PSE, d2: CQS_6, value: 1.50, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: RGLA_PSE, d2: UNRATED, value: 1.00, unit: RATE, ref: CRR Part Three Title II Ch. 2}
+  - {key: SA_RW, d1: INSTITUTION, d2: CQS_1, value: 0.20, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW, d1: INSTITUTION, d2: CQS_2, value: 0.30, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW, d1: INSTITUTION, d2: CQS_3, value: 0.50, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW, d1: INSTITUTION, d2: CQS_4, value: 1.00, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW, d1: INSTITUTION, d2: CQS_5, value: 1.00, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW, d1: INSTITUTION, d2: CQS_6, value: 1.50, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW, d1: INSTITUTION, d2: UNRATED, value: 0.40, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW_SHORT, d1: INSTITUTION, d2: CQS_1, value: 0.20, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW_SHORT, d1: INSTITUTION, d2: CQS_2, value: 0.20, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW_SHORT, d1: INSTITUTION, d2: CQS_3, value: 0.20, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW_SHORT, d1: INSTITUTION, d2: CQS_4, value: 0.50, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW_SHORT, d1: INSTITUTION, d2: CQS_5, value: 0.50, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW_SHORT, d1: INSTITUTION, d2: CQS_6, value: 1.50, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW_SHORT, d1: INSTITUTION, d2: UNRATED, value: 0.20, unit: RATE, ref: CRR Art. 119-121}
+  - {key: SA_RW, d1: COVERED_BOND, d2: CQS_1, value: 0.10, unit: RATE, ref: CRR Art. 129}
+  - {key: SA_RW, d1: COVERED_BOND, d2: CQS_2, value: 0.20, unit: RATE, ref: CRR Art. 129}
+  - {key: SA_RW, d1: COVERED_BOND, d2: CQS_3, value: 0.20, unit: RATE, ref: CRR Art. 129}
+  - {key: SA_RW, d1: COVERED_BOND, d2: CQS_4, value: 0.50, unit: RATE, ref: CRR Art. 129}
+  - {key: SA_RW, d1: COVERED_BOND, d2: CQS_5, value: 0.50, unit: RATE, ref: CRR Art. 129}
+  - {key: SA_RW, d1: COVERED_BOND, d2: CQS_6, value: 1.00, unit: RATE, ref: CRR Art. 129}
+  - {key: SA_RW, d1: COVERED_BOND, d2: UNRATED, value: 0.50, unit: RATE, ref: CRR Art. 129}
+  - {key: SA_RW, d1: CORPORATE, d2: CQS_1, value: 0.20, unit: RATE, ref: CRR Art. 122}
+  - {key: SA_RW, d1: CORPORATE, d2: CQS_2, value: 0.50, unit: RATE, ref: CRR Art. 122}
+  - {key: SA_RW, d1: CORPORATE, d2: CQS_3, value: 0.75, unit: RATE, ref: CRR Art. 122}
+  - {key: SA_RW, d1: CORPORATE, d2: CQS_4, value: 1.00, unit: RATE, ref: CRR Art. 122}
+  - {key: SA_RW, d1: CORPORATE, d2: CQS_5, value: 1.50, unit: RATE, ref: CRR Art. 122}
+  - {key: SA_RW, d1: CORPORATE, d2: CQS_6, value: 1.50, unit: RATE, ref: CRR Art. 122}
+  - {key: SA_RW, d1: CORPORATE, d2: UNRATED, value: 1.00, unit: RATE, ref: CRR Art. 122}
+
+  - {key: SA_RW_FIXED, d1: RETAIL_TRANSACTOR, value: 0.45, unit: RATE, ref: CRR Art. 123}
+  - {key: SA_RW_FIXED, d1: RETAIL_ELIGIBLE, value: 0.75, unit: RATE, ref: CRR Art. 123}
+  - {key: SA_RW_FIXED, d1: RETAIL_OTHER, value: 1.00, unit: RATE, ref: CRR Art. 123}
+  - {key: SA_RW_FIXED, d1: SUBORDINATED, value: 1.50, unit: RATE, ref: CRR Art. 128}
+  - {key: SA_RW_FIXED, d1: EQUITY, value: 2.50, unit: RATE, ref: CRR Art. 133}
+  - {key: SA_RW_FIXED, d1: SPECULATIVE_EQUITY, value: 4.00, unit: RATE, ref: CRR Art. 133}
+  - {key: SA_RW_FIXED, d1: ADC, value: 1.50, unit: RATE, ref: CRR Art. 126a}
+  - {key: SA_RW_FIXED, d1: CIU_FALLBACK, value: 12.50, unit: RATE, ref: CRR Art. 132}
+  - {key: SA_RW_FIXED, d1: CASH, value: 0.00, unit: RATE, ref: CRR Art. 134}
+  - {key: SA_RW_FIXED, d1: CENTRAL_BANK_OWN_CURRENCY, value: 0.00, unit: RATE, ref: CRR Art. 114}
+  - {key: SA_RW_FIXED, d1: OTHER, value: 1.00, unit: RATE, ref: CRR Ch. 2}
+  - {key: SA_RW_DEFAULT, d1: COVERAGE_THRESHOLD, value: 0.20, unit: RATE, ref: CRR Art. 127}
+  - {key: SA_RW_DEFAULT, d1: ABOVE_THRESHOLD, value: 1.00, unit: RATE, ref: CRR Art. 127}
+  - {key: SA_RW_DEFAULT, d1: BELOW_THRESHOLD, value: 1.50, unit: RATE, ref: CRR Art. 127}
+  - {key: SPECIALISED_RW, d1: OBJECT_FINANCE, value: 1.00, unit: RATE, ref: CRR Art. 122a}
+  - {key: SPECIALISED_RW, d1: COMMODITIES_FINANCE, value: 1.00, unit: RATE, ref: CRR Art. 122a}
+  - {key: SPECIALISED_RW, d1: PROJECT_PRE_OPERATIONAL, value: 1.30, unit: RATE, ref: CRR Art. 122a}
+  - {key: SPECIALISED_RW, d1: PROJECT_OPERATIONAL_HIGH_QUALITY, value: 0.80, unit: RATE, ref: CRR Art. 122a}
+  - {key: SPECIALISED_RW, d1: PROJECT_OPERATIONAL_OTHER, value: 1.00, unit: RATE, ref: CRR Art. 122a}
+  - {key: SPECIALISED_RW, d1: INCOME_PRODUCING_RE, value: 1.00, unit: RATE, ref: CRR Art. 122a}
+
+  - {key: RE_IPRE_RW, d1: RESIDENTIAL, d2: ETV_LE_050, value: 0.30, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_RW, d1: RESIDENTIAL, d2: ETV_LE_060, value: 0.35, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_RW, d1: RESIDENTIAL, d2: ETV_LE_080, value: 0.45, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_RW, d1: RESIDENTIAL, d2: ETV_LE_090, value: 0.60, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_RW, d1: RESIDENTIAL, d2: ETV_LE_100, value: 0.75, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_RW, d1: RESIDENTIAL, d2: ETV_GT_100, value: 1.05, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_RW, d1: COMMERCIAL, d2: ETV_LE_060, value: 0.70, unit: RATE, ref: CRR Art. 126}
+  - {key: RE_IPRE_RW, d1: COMMERCIAL, d2: ETV_LE_080, value: 0.90, unit: RATE, ref: CRR Art. 126}
+  - {key: RE_IPRE_RW, d1: COMMERCIAL, d2: ETV_GT_080, value: 1.10, unit: RATE, ref: CRR Art. 126}
+  - {key: RE_IPRE_BOUND, d1: RESIDENTIAL, d2: BAND_1, value: 0.50, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_BOUND, d1: RESIDENTIAL, d2: BAND_2, value: 0.60, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_BOUND, d1: RESIDENTIAL, d2: BAND_3, value: 0.80, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_BOUND, d1: RESIDENTIAL, d2: BAND_4, value: 0.90, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_BOUND, d1: RESIDENTIAL, d2: BAND_5, value: 1.00, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_IPRE_BOUND, d1: COMMERCIAL, d2: BAND_1, value: 0.60, unit: RATE, ref: CRR Art. 126}
+  - {key: RE_IPRE_BOUND, d1: COMMERCIAL, d2: BAND_2, value: 0.80, unit: RATE, ref: CRR Art. 126}
+  - {key: RE_SPLIT, d1: PRIVILEGED_VALUE_SHARE, value: 0.55, unit: RATE, ref: CRR Art. 124-126}
+  - {key: RE_SPLIT, d1: RESIDENTIAL_RW, value: 0.20, unit: RATE, ref: CRR Art. 125}
+  - {key: RE_SPLIT, d1: COMMERCIAL_RW, value: 0.60, unit: RATE, ref: CRR Art. 126}
+  - {key: RE_SPLIT, d1: ADC_RW, value: 1.50, unit: RATE, ref: CRR Art. 126a}
+  - {key: CURRENCY_MISMATCH, d1: MULTIPLIER, value: 1.50, unit: FACTOR, ref: CRR Art. 123a}
+  - {key: CURRENCY_MISMATCH, d1: RW_CAP, value: 1.50, unit: RATE, ref: CRR Art. 123a}
+
+  - {key: IRB_CORP, d1: DECAY, value: 50.0, unit: FACTOR, ref: CRR Art. 153}
+  - {key: IRB_CORP, d1: R_LOW, value: 0.12, unit: RATE, ref: CRR Art. 153}
+  - {key: IRB_CORP, d1: R_HIGH, value: 0.24, unit: RATE, ref: CRR Art. 153}
+  - {key: IRB_CORP, d1: SME_ADJUSTMENT, value: 0.04, unit: RATE, ref: CRR Art. 153}
+  - {key: IRB_CORP, d1: SME_SALES_MIN_M, value: 5.0, unit: EUR_MILLION, ref: CRR Art. 153}
+  - {key: IRB_CORP, d1: SME_SALES_MAX_M, value: 50.0, unit: EUR_MILLION, ref: CRR Art. 153}
+  - {key: IRB_CORP, d1: FINANCIAL_MULTIPLIER, value: 1.25, unit: FACTOR, ref: CRR Art. 153}
+  - {key: IRB_RETAIL, d1: DECAY, value: 35.0, unit: FACTOR, ref: CRR Art. 154}
+  - {key: IRB_RETAIL, d1: R_LOW, value: 0.03, unit: RATE, ref: CRR Art. 154}
+  - {key: IRB_RETAIL, d1: R_HIGH, value: 0.16, unit: RATE, ref: CRR Art. 154}
+  - {key: IRB_RETAIL, d1: RESIDENTIAL_R, value: 0.15, unit: RATE, ref: CRR Art. 154}
+  - {key: IRB_RETAIL, d1: QRRE_R, value: 0.04, unit: RATE, ref: CRR Art. 154}
+  - {key: IRB_MATURITY, d1: A, value: 0.11852, unit: FACTOR, ref: CRR Art. 153}
+  - {key: IRB_MATURITY, d1: B, value: 0.05478, unit: FACTOR, ref: CRR Art. 153}
+  - {key: IRB_MATURITY, d1: MIN_YEARS, value: 1.0, unit: YEARS, ref: CRR Art. 162}
+  - {key: IRB_MATURITY, d1: MAX_YEARS, value: 5.0, unit: YEARS, ref: CRR Art. 162}
+  - {key: IRB_MATURITY, d1: CENTER, value: 2.5, unit: YEARS, ref: CRR Art. 153}
+  - {key: IRB_MATURITY, d1: DENOMINATOR_FACTOR, value: 1.5, unit: FACTOR, ref: CRR Art. 153}
+  - {key: IRB, d1: CONFIDENCE_LEVEL, value: 0.999, unit: RATE, ref: CRR Art. 153-154}
+  - {key: RWA_MULTIPLIER, d1: PILLAR1, value: 12.5, unit: FACTOR, ref: CRR Art. 92}
+
+  - {key: SA_CCR, d1: ALPHA, value: 1.40, unit: FACTOR, ref: CRR Art. 274}
+  - {key: SA_CCR, d1: MULTIPLIER_FLOOR, value: 0.05, unit: RATE, ref: CRR Art. 278}
+  - {key: CCP_RW, d1: QCCP_MEMBER, value: 0.02, unit: RATE, ref: CRR Art. 305}
+  - {key: CCP_RW, d1: QCCP_JOINT_DEFAULT, value: 0.04, unit: RATE, ref: CRR Art. 305}
+  - {key: CCP_RW, d1: NON_QCCP, value: 1.00, unit: RATE, ref: CRR Art. 306}
+  - {key: CCP_DF, d1: FLOOR_CAPITAL_RATE, value: 0.08, unit: RATE, ref: CRR Art. 308}
+  - {key: BA_CVA, d1: RHO, value: 0.50, unit: FACTOR, ref: CRR Art. 384}
+  - {key: BA_CVA, d1: DISCOUNT_RATE, value: 0.05, unit: RATE, ref: CRR Art. 384}
+  - {key: BA_CVA, d1: ALPHA, value: 1.40, unit: FACTOR, ref: CRR Art. 384}
+  - {key: BA_CVA, d1: UNHEDGED_WEIGHT, value: 0.25, unit: FACTOR, ref: CRR Art. 384}
+  - {key: BA_CVA, d1: HEDGED_WEIGHT, value: 0.65, unit: FACTOR, ref: CRR Art. 384}
+  - {key: SA_CVA, d1: INTER_BUCKET_CORRELATION, value: 0.50, unit: FACTOR, ref: CRR Part Three Title VI}
+  - {key: SETTLEMENT_FACTOR, d1: DAYS_0_4, value: 0.00, unit: RATE, ref: CRR Art. 378}
+  - {key: SETTLEMENT_FACTOR, d1: DAYS_5_15, value: 0.08, unit: RATE, ref: CRR Art. 378}
+  - {key: SETTLEMENT_FACTOR, d1: DAYS_16_30, value: 0.50, unit: RATE, ref: CRR Art. 378}
+  - {key: SETTLEMENT_FACTOR, d1: DAYS_31_45, value: 0.75, unit: RATE, ref: CRR Art. 378}
+  - {key: SETTLEMENT_FACTOR, d1: DAYS_46_PLUS, value: 1.00, unit: RATE, ref: CRR Art. 378}
+  - {key: SETTLEMENT_BOUND, d1: BAND_1, value: 4, unit: DAYS, ref: CRR Art. 378}
+  - {key: SETTLEMENT_BOUND, d1: BAND_2, value: 15, unit: DAYS, ref: CRR Art. 378}
+  - {key: SETTLEMENT_BOUND, d1: BAND_3, value: 30, unit: DAYS, ref: CRR Art. 378}
+  - {key: SETTLEMENT_BOUND, d1: BAND_4, value: 45, unit: DAYS, ref: CRR Art. 378}
+
+  - {key: SEC, d1: CAPITAL_RATE, value: 0.08, unit: RATE, ref: CRR Part Three Title II Ch. 5}
+  - {key: SEC, d1: RW_CAP, value: 12.50, unit: RATE, ref: CRR Part Three Title II Ch. 5}
+  - {key: SEC_FLOOR, d1: STS, value: 0.10, unit: RATE, ref: CRR Art. 260/262}
+  - {key: SEC_FLOOR, d1: STS_NONSENIOR, value: 0.15, unit: RATE, ref: CRR Art. 260/262}
+  - {key: SEC_FLOOR, d1: NON_STS, value: 0.15, unit: RATE, ref: CRR Art. 259/261}
+  - {key: SEC_FLOOR, d1: RESECURITISATION, value: 1.00, unit: RATE, ref: CRR Art. 269}
+  - {key: SEC_ERBA_RW, d1: CQS_1, value: 0.15, unit: RATE, ref: CRR Art. 263}
+  - {key: SEC_ERBA_RW, d1: CQS_2, value: 0.25, unit: RATE, ref: CRR Art. 263}
+  - {key: SEC_ERBA_RW, d1: CQS_3, value: 0.50, unit: RATE, ref: CRR Art. 263}
+  - {key: SEC_ERBA_RW, d1: CQS_4, value: 1.00, unit: RATE, ref: CRR Art. 263}
+  - {key: SEC_ERBA_RW, d1: CQS_5, value: 2.50, unit: RATE, ref: CRR Art. 263}
+  - {key: SEC_ERBA_RW, d1: CQS_6, value: 12.50, unit: RATE, ref: CRR Art. 263}
+  - {key: SEC_SSFA, d1: P_FLOOR, value: 0.30, unit: FACTOR, ref: CRR Art. 259}
+  - {key: SEC_SSFA, d1: STS_P_MULTIPLIER, value: 0.50, unit: FACTOR, ref: CRR Art. 260}
+  - {key: SEC_SSFA, d1: SA_P, value: 1.00, unit: FACTOR, ref: CRR Art. 261}
+  - {key: SEC_SSFA, d1: SA_STS_P, value: 0.50, unit: FACTOR, ref: CRR Art. 262}
+  - {key: SEC_SSFA, d1: RESECURITISATION_P, value: 1.50, unit: FACTOR, ref: CRR Art. 269}
+  - {key: SEC_SSFA, d1: DEFAULTED_POOL_FACTOR, value: 0.50, unit: RATE, ref: CRR Art. 261}
+  - {key: SEC_IRBA, d1: GRANULARITY_THRESHOLD, value: 25, unit: COUNT, ref: CRR Art. 259}
+  - {key: SEC_ERBA, d1: MATURITY_MIN, value: 1.00, unit: YEARS, ref: CRR Art. 257/263}
+  - {key: SEC_ERBA, d1: MATURITY_MAX, value: 5.00, unit: YEARS, ref: CRR Art. 257/263}
+  - {key: SEC_ERBA, d1: THICKNESS_CAP, value: 0.50, unit: RATE, ref: CRR Art. 263(5)}
+  - {key: CQS, d1: MIN, value: 1, unit: INTEGER, ref: CRR rating scale convention}
+  - {key: CQS, d1: MAX, value: 6, unit: INTEGER, ref: CRR rating scale convention}
+
+  - {key: FRTB, d1: INTER_BUCKET_CORRELATION, value: 0.20, unit: RATE, ref: CRR Part Three Title IV}
+  - {key: FRTB_IMA, d1: DEFAULT_BACKTEST_MULTIPLIER, value: 1.50, unit: FACTOR, ref: CRR Art. 325ba}
+  - {key: FRTB_CORRELATION, d1: HIGH_MULTIPLIER, value: 1.25, unit: FACTOR, ref: CRR Art. 325f}
+  - {key: FRTB_CORRELATION, d1: HIGH_CAP, value: 1.00, unit: RATE, ref: CRR Art. 325f}
+  - {key: FRTB_CORRELATION, d1: LOW_LINEAR_MULTIPLIER, value: 2.00, unit: FACTOR, ref: CRR Art. 325f}
+  - {key: FRTB_CORRELATION, d1: LOW_FLOOR_MULTIPLIER, value: 0.75, unit: FACTOR, ref: CRR Art. 325f}
+  - {key: FRTB_DRC, d1: MATURITY_MIN, value: 0.25, unit: YEARS, ref: CRR Art. 325w}
+  - {key: FRTB_DRC, d1: MATURITY_MAX, value: 1.00, unit: YEARS, ref: CRR Art. 325w}
+  - {key: FRTB_RRAO, d1: EXOTIC_RATE, value: 0.01, unit: RATE, ref: CRR Art. 325u}
+  - {key: FRTB_RRAO, d1: OTHER_RATE, value: 0.001, unit: RATE, ref: CRR Art. 325u}
+  - {key: FRTB_PLA_ELIGIBLE, d1: GREEN, value: 1, unit: BOOLEAN, ref: RTS 2022/2059}
+  - {key: FRTB_PLA_ELIGIBLE, d1: AMBER, value: 1, unit: BOOLEAN, ref: RTS 2022/2059}
+  - {key: FRTB_PLA_ELIGIBLE, d1: RED, value: 0, unit: BOOLEAN, ref: RTS 2022/2059}
+  - {key: CRYPTO_RW, d1: TOKENISED_TRADITIONAL, value: 1.00, unit: RATE, ref: CRR transitional}
+  - {key: CRYPTO_RW, d1: MICA_ART, value: 2.50, unit: RATE, ref: CRR transitional}
+  - {key: CRYPTO_RW, d1: OTHER_CRYPTO, value: 12.50, unit: RATE, ref: CRR transitional}
+
+  - {key: BIC, d1: ASSET_CAP, value: 0.0225, unit: RATE, ref: CRR Art. 314}
+  - {key: BIC, d1: BUCKET_1_LIMIT_BN, value: 1.0, unit: EUR_BILLION, ref: CRR Art. 313}
+  - {key: BIC, d1: BUCKET_2_LIMIT_BN, value: 30.0, unit: EUR_BILLION, ref: CRR Art. 313}
+  - {key: BIC, d1: COEFFICIENT_1, value: 0.12, unit: RATE, ref: CRR Art. 313}
+  - {key: BIC, d1: COEFFICIENT_2, value: 0.15, unit: RATE, ref: CRR Art. 313}
+  - {key: BIC, d1: COEFFICIENT_3, value: 0.18, unit: RATE, ref: CRR Art. 313}
+  - {key: BIC, d1: HISTORY_YEARS, value: 3, unit: COUNT, ref: CRR Art. 314}
+  - {key: UNIT_SCALE, d1: EUR_BILLION, value: 1000000000, unit: EUR, ref: Calculation convention}
+  - {key: OPRISK, d1: EU_ILM, value: 1.00, unit: FACTOR, ref: CRR Art. 312}
+
+  - {key: OUTPUT_FLOOR, d1: '2025', value: 0.50, unit: RATE, ref: CRR Art. 465}
+  - {key: OUTPUT_FLOOR, d1: '2026', value: 0.55, unit: RATE, ref: CRR Art. 465}
+  - {key: OUTPUT_FLOOR, d1: '2027', value: 0.60, unit: RATE, ref: CRR Art. 465}
+  - {key: OUTPUT_FLOOR, d1: '2028', value: 0.65, unit: RATE, ref: CRR Art. 465}
+  - {key: OUTPUT_FLOOR, d1: '2029', value: 0.70, unit: RATE, ref: CRR Art. 465}
+  - {key: OUTPUT_FLOOR, d1: FULLY_LOADED, value: 0.725, unit: RATE, ref: CRR Art. 92 / 465}
+  - {key: OUTPUT_FLOOR, d1: OPTIONAL_CAP, value: 1.25, unit: FACTOR, ref: CRR Art. 465 national option}
+
+  - {key: CAPITAL_RATE, d1: CET1, value: 0.045, unit: RATE, ref: CRR Art. 92}
+  - {key: CAPITAL_RATE, d1: TIER1, value: 0.060, unit: RATE, ref: CRR Art. 92}
+  - {key: CAPITAL_RATE, d1: TOTAL, value: 0.080, unit: RATE, ref: CRR Art. 92}
+  - {key: P2R_SHARE, d1: CET1, value: 0.5625, unit: RATE, ref: SREP Guidelines}
+  - {key: P2R_SHARE, d1: TIER1, value: 0.75, unit: RATE, ref: SREP Guidelines}
+  - {key: CAPITAL_BUFFER, d1: CCB_DEFAULT, value: 0.025, unit: RATE, ref: CRD Art. 129}
+  - {key: LEVERAGE, d1: DEFAULT_REQUIREMENT, value: 0.03, unit: RATE, ref: CRR Art. 92}
+  - {key: LEVERAGE, d1: OFF_BALANCE_CCF, value: 0.40, unit: RATE, ref: CRR Part Seven}
+  - {key: T2, d1: GENERAL_ADJUSTMENT_CAP, value: 0.0125, unit: RATE, ref: CRR Art. 62}
+  - {key: T2, d1: IRB_EXCESS_CAP, value: 0.006, unit: RATE, ref: CRR Art. 62}
+  - {key: T2, d1: AMORTISATION_YEARS, value: 5.0, unit: YEARS, ref: CRR Art. 64}
+  - {key: PRUDENT_VALUATION, d1: SIMPLIFIED_RATE, value: 0.001, unit: RATE, ref: RTS 2016/101}
+  - {key: RWA_EQUIVALENT, d1: REFERENCE_RATE, value: 0.08, unit: RATE, ref: Analytical convention}
+
+  - {key: NPE_UNSECURED, d1: YEAR_1, value: 0.00, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_UNSECURED, d1: YEAR_2, value: 0.00, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_UNSECURED, d1: YEAR_3, value: 0.35, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_UNSECURED, d1: YEAR_4_PLUS, value: 1.00, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_1_3, value: 0.00, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_4, value: 0.25, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_5, value: 0.35, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_6, value: 0.55, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_7, value: 0.70, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_8, value: 0.80, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_9, value: 0.85, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_PROPERTY, d1: YEAR_10_PLUS, value: 1.00, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_OTHER, d1: YEAR_1_3, value: 0.00, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_OTHER, d1: YEAR_4, value: 0.25, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_OTHER, d1: YEAR_5, value: 0.35, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_OTHER, d1: YEAR_6, value: 0.55, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_OTHER, d1: YEAR_7, value: 0.80, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE_SECURED_OTHER, d1: YEAR_8_PLUS, value: 1.00, unit: RATE, ref: CRR Art. 47c}
+  - {key: NPE, d1: PROPERTY_SECURED_SHARE, value: 0.70, unit: RATE, ref: Reference allocation assumption}
+  - {key: NPE_MILESTONE, d1: UNSECURED_LAST_INITIAL_YEAR, value: 3, unit: YEARS, ref: CRR Art. 47c}
+  - {key: NPE_MILESTONE, d1: PROPERTY_LAST_YEAR, value: 9, unit: YEARS, ref: CRR Art. 47c}
+  - {key: NPE_MILESTONE, d1: OTHER_SECURED_LAST_YEAR, value: 7, unit: YEARS, ref: CRR Art. 47c}
+  - {key: NPE_MILESTONE, d1: SECURED_INITIAL_YEARS, value: 3, unit: YEARS, ref: CRR Art. 47c}
+
+  - {key: IRRBB_SHOCK, d1: DECAY_YEARS, value: 4.0, unit: YEARS, ref: RTS 2024/856}
+  - {key: IRRBB_SHOCK, d1: STEEPENER_SHORT_WEIGHT, value: -0.65, unit: FACTOR, ref: RTS 2024/856}
+  - {key: IRRBB_SHOCK, d1: STEEPENER_LONG_WEIGHT, value: 0.90, unit: FACTOR, ref: RTS 2024/856}
+  - {key: IRRBB_SHOCK, d1: FLATTENER_SHORT_WEIGHT, value: 0.80, unit: FACTOR, ref: RTS 2024/856}
+  - {key: IRRBB_SHOCK, d1: FLATTENER_LONG_WEIGHT, value: -0.60, unit: FACTOR, ref: RTS 2024/856}
+  - {key: IRRBB_FLOOR, d1: BASE, value: -0.015, unit: RATE, ref: RTS 2024/856}
+  - {key: IRRBB_FLOOR, d1: SLOPE, value: 0.0003, unit: RATE_PER_YEAR, ref: RTS 2024/856}
+  - {key: IRRBB_SOT, d1: EVE, value: 0.15, unit: RATE, ref: RTS 2024/856}
+  - {key: IRRBB_SOT, d1: NII, value: 0.05, unit: RATE, ref: RTS 2024/856}
+  - {key: IRRBB_MODEL, d1: HORIZON_YEARS, value: 1.0, unit: YEARS, ref: Internal model configuration}
+  - {key: IRRBB_MODEL, d1: VAR_CONFIDENCE, value: 0.99, unit: RATE, ref: Internal model configuration}
+  - {key: IRRBB_MODEL, d1: RATE_VOLATILITY, value: 0.012, unit: RATE, ref: Internal model configuration}
+  - {key: IRRBB_MODEL, d1: SIMULATION_PATHS, value: 5000, unit: COUNT, ref: Internal model configuration}
+  - {key: IRRBB_MODEL, d1: RANDOM_SEED, value: 20260831, unit: INTEGER, ref: Internal model configuration}
+  - {key: IRRBB_MODEL, d1: BASIS_POINTS_PER_UNIT, value: 10000, unit: FACTOR, ref: Calculation convention}
+  - {key: CSRBB_MODEL, d1: STRESS_FACTOR, value: 0.005, unit: RATE, ref: EBA GL 2022/14}
+
+  - {key: ICAAP, d1: DIVERSIFICATION_CAP, value: 0.20, unit: RATE, ref: Internal ICAAP policy}
+  - {key: ICAAP, d1: FALLBACK_AT1_SHARE, value: 0.25, unit: RATE, ref: Internal ICAAP policy}
+  - {key: ICAAP, d1: FALLBACK_MANAGEMENT_RESERVE, value: 50000000, unit: EUR, ref: Internal ICAAP policy}
+  - {key: TIME_CONVENTION, d1: DAYS_PER_YEAR, value: 365.25, unit: DAYS, ref: Internal calculation convention}
+  - {key: CONTROL, d1: ABSOLUTE_TOLERANCE_EUR, value: 0.01, unit: EUR, ref: Internal calculation control}
+  - {key: CONTROL, d1: RATE_TOLERANCE, value: 0.000000001, unit: RATE, ref: Internal calculation control}
+
+parameter_tables:
+  - key: SEC_IRBA_COEFF
+    rows: [NON_RETAIL_SENIOR_NGE25, NON_RETAIL_SENIOR_NLT25,
+           NON_RETAIL_NONSENIOR_NGE25, NON_RETAIL_NONSENIOR_NLT25,
+           RETAIL_SENIOR_NGE25, RETAIL_NONSENIOR_NGE25]
+    columns: [A, B, C, D, E]
+    values:
+      - [0.00, 3.56, -1.85, 0.55, 0.07]
+      - [0.11, 2.61, -2.91, 0.68, 0.07]
+      - [0.16, 2.87, -1.03, 0.21, 0.07]
+      - [0.22, 2.35, -2.46, 0.48, 0.07]
+      - [0.00, 0.00, -7.48, 0.71, 0.24]
+      - [0.00, 0.00, -5.78, 0.55, 0.27]
+    unit: FACTOR
+    ref: CRR Art. 259
+  - key: SEC_ERBA_LONG
+    rows: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17',OTHER]
+    columns: [NORMAL_SENIOR_1Y, NORMAL_SENIOR_5Y, NORMAL_NONSENIOR_1Y, NORMAL_NONSENIOR_5Y,
+              STS_SENIOR_1Y, STS_SENIOR_5Y, STS_NONSENIOR_1Y, STS_NONSENIOR_5Y]
+    values:
+      - [0.15,0.20,0.15,0.70, 0.10,0.10,0.15,0.40]
+      - [0.15,0.30,0.15,0.90, 0.10,0.15,0.15,0.55]
+      - [0.25,0.40,0.30,1.20, 0.15,0.20,0.15,0.70]
+      - [0.30,0.45,0.40,1.40, 0.15,0.25,0.25,0.80]
+      - [0.40,0.50,0.60,1.60, 0.20,0.30,0.35,0.95]
+      - [0.50,0.65,0.80,1.80, 0.30,0.40,0.60,1.35]
+      - [0.60,0.70,1.20,2.10, 0.35,0.40,0.95,1.70]
+      - [0.75,0.90,1.70,2.60, 0.45,0.55,1.50,2.25]
+      - [0.90,1.05,2.20,3.10, 0.55,0.65,1.80,2.55]
+      - [1.20,1.40,3.30,4.20, 0.70,0.85,2.70,3.45]
+      - [1.40,1.60,4.70,5.80, 1.20,1.35,4.05,5.00]
+      - [1.60,1.80,6.20,7.60, 1.35,1.55,5.35,6.55]
+      - [2.00,2.25,7.50,8.60, 1.70,1.95,6.45,7.40]
+      - [2.50,2.80,9.00,9.50, 2.25,2.50,8.10,8.55]
+      - [3.10,3.40,10.50,10.50, 2.80,3.05,9.45,9.45]
+      - [3.80,4.20,11.30,11.30, 3.40,3.80,10.15,10.15]
+      - [4.60,5.05,12.50,12.50, 4.15,4.55,12.50,12.50]
+      - [12.50,12.50,12.50,12.50, 12.50,12.50,12.50,12.50]
+    unit: RATE
+    ref: CRR Art. 263 Tabelle 2 / Art. 264 Tabelle 4
+
+formula_registry:
+  SA_EAD: KSA
+  SA_RW: KSA
+  SA_EAD/SA_RW: KSA
+  SA_REAL_ESTATE: KSA
+  CRM_COMPREHENSIVE: CRM
+  IRB_CORP_K: IRB
+  IRB_RETAIL_K: IRB
+  IRB_EL: IRB
+  SA_CCR: CCR
+  SFT_COMPREHENSIVE: CCR
+  CCP: CCR
+  SEC_SSFA: SEC
+  SEC_ERBA: SEC
+  BA_CVA: CVA
+  SA_CVA: CVA
+  SETTLEMENT: SETTLEMENT
+  LARGE_EXPOSURE: LARGE_EXPOSURE
+  MARKET_LEGACY: MARKET
+  FRTB_SBM: MARKET
+  FRTB_DRC: MARKET
+  FRTB_RRAO: MARKET
+  FRTB_SBM/DRC/RRAO: MARKET
+  FRTB_IMA: MARKET
+  OPRISK_BIC: OPRISK
+  OUTPUT_FLOOR: TREA
+  OWN_FUNDS: CAPITAL
+  NPE_BACKSTOP: CAPITAL
+  PRUDENT_VALUATION: CAPITAL
+  CRYPTO_TRANSITIONAL: CREDIT
+  LEVERAGE_MREL_TLAC: CAPITAL
+  IRRBB_EVE: IRRBB
+  IRRBB_NII: IRRBB
+  IRRBB_EVE/IRRBB_NII: IRRBB
+  ICAAP_EC: ICAAP
+  ICAAP_NORMATIVE: ICAAP
+  P2R_RWA_EQ: CAPITAL
+  EC_RWA_EQ: ICAAP
+  IRRBB_RWA_EQ: IRRBB
+  PILLAR2_BRIDGE: ICAAP

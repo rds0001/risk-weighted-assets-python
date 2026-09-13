@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RWA Control Center</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">CRR III · ICAAP · IRRBB</p>
+      <h1>RWA Control Center</h1>
+    </div>
+    <div id="server-status" class="status neutral">Verbindung wird geprüft</div>
+  </header>
+
+  <main>
+    <section class="control-panel card">
+      <label for="dataset-select">Stichtag und Datenversion</label>
+      <div class="control-row">
+        <select id="dataset-select" aria-label="Datensatz auswählen"></select>
+        <button id="refresh-button" class="secondary" type="button">Aktualisieren</button>
+        <button id="run-button" class="primary" type="button">Gesamtlauf starten</button>
+      </div>
+      <p id="run-message" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="dataset-meta" class="meta-grid" aria-label="Datensatzinformationen"></section>
+    <section id="metrics" class="metric-grid" aria-label="Wichtigste Ergebnisse"></section>
+
+    <section class="two-column">
+      <article class="card">
+        <div class="section-heading">
+          <div><p class="eyebrow">Datenbasis</p><h2>Input-Workbooks</h2></div>
+          <span id="input-badge" class="badge"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Datei</th><th>Tabellen</th><th>Zeilen</th><th>Stand</th><th>Größe</th><th></th></tr></thead>
+            <tbody id="input-table"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="section-heading">
+          <div><p class="eyebrow">Berechnung</p><h2>Ergebnis-Workbooks</h2></div>
+          <select id="run-select" aria-label="Lauf auswählen"></select>
+        </div>
+        <div id="run-summary" class="run-summary"></div>
+        <div id="output-files" class="file-list"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer>Lokale Oberfläche · Excel bleibt führender Ein- und Ausgabekanal</footer>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

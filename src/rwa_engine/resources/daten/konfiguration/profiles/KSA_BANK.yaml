@@ -1,0 +1,39 @@
+profile_id: KSA_BANK
+profile_version: 1.0.0
+description: Institutsneutrales KSA-Profil ohne IRB, Handelsbuch, CCR/CVA, Verbriefungen oder Großkreditüberschreitungen.
+base_as_of_date: 2026-08-31
+default_dataset_version: v1.0.0
+default_seed: 5752026
+source_inputs: daten/referenzprofile/MID_SIZE_UNIVERSAL/inputs
+integrity_manifest: daten/referenzprofile/MID_SIZE_UNIVERSAL/profile_manifest.json
+regulatory_config: daten/konfiguration/regulatory/crr3_eu_2026_v1.yaml
+date_shift_policy: SHIFT_ALL_DATE_FIELDS
+seed_policy: MANIFEST_ONLY_IMMUTABLE_REFERENCE
+shift_columns:
+  date: [as_of_date, valid_from, valid_to, start_date, maturity_date, npe_classification_date,
+         valuation_date, event_date, booking_date, issue_date, next_repricing_date,
+         payment_date, repricing_date, validation_date, legal_opinion_date]
+  datetime: [known_from, known_to, approved_at]
+  immutable_date_columns: [publication_date, application_date]
+transformations:
+  set_columns:
+    exposure_lot:
+      approach: KSA
+  empty_tables:
+    - irb_parameter
+    - netting_set
+    - netting_agreement
+    - derivative_trade
+    - sft_trade
+    - margin_collateral
+    - ccp_exposure
+    - cva_scope_item
+    - cva_sensitivity
+    - settlement_exposure
+    - large_exposure_excess
+    - securitisation_pool
+    - securitisation_transaction
+    - securitisation_tranche
+    - trading_position
+    - market_sensitivity
+    - frtb_ima_input

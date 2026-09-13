@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible defect in the library, CLI or local web application.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include confidential, customer, counterparty or real bank data.
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python and operating-system version
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Use synthetic or redacted data only.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      description: Include relevant output from `rwa doctor` and a redacted traceback.

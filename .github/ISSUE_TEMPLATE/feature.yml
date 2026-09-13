@@ -1,0 +1,27 @@
+name: Feature request
+description: Propose a scoped functional, regulatory or technical enhancement.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: Describe the banking or integration problem to solve.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: regulatory
+    attributes:
+      label: Regulatory basis and effective date
+      description: Link official primary sources where applicable; do not attach downloaded publications.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria

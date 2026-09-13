@@ -1,0 +1,8 @@
+include CHANGELOG.md CITATION.cff CONTRIBUTING.md DISCLAIMER.md LICENSE NOTICE README.md SECURITY.md THIRD_PARTY_NOTICES.md UPSTREAM.md
+recursive-include docs *.md
+recursive-include examples *.py *.md
+recursive-include src/rwa_engine/resources *
+recursive-include src/rwa_engine/web/static *
+recursive-include tests *.py
+recursive-include tools *.py
+global-exclude *.py[cod] __pycache__ .DS_Store

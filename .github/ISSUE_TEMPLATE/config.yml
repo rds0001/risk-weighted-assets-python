@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/rds0001/risk-weighted-assets-python/security/policy
+    about: Please report suspected vulnerabilities privately according to SECURITY.md.
