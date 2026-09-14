@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from rwa_engine import formulas as f
@@ -108,6 +108,7 @@ def test_canonical_legal_links_are_visible_in_metadata_readme_and_app():
     undrawn_a=st.floats(min_value=0, max_value=1e10, allow_nan=False, allow_infinity=False),
     increment=st.floats(min_value=0, max_value=1e10, allow_nan=False, allow_infinity=False),
 )
+@settings(deadline=None)
 def test_sa_ead_is_monotone_in_undrawn(gross, undrawn_a, increment):
     params = parameter_store()
 

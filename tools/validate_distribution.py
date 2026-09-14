@@ -38,7 +38,7 @@ def validate_wheel(path: Path) -> dict[str, int]:
         _assert(len(metadata_names) == 1, "wheel must contain exactly one METADATA file")
         metadata = BytesParser(policy=default).parsebytes(archive.read(metadata_names[0]))
         _assert(metadata["Name"] == "risk-weighted-assets", "unexpected distribution name")
-        _assert(metadata["Version"] == "1.0.0", "unexpected distribution version")
+        _assert(metadata["Version"] == "1.1.0", "unexpected distribution version")
         _assert(metadata["License-Expression"] == "GPL-3.0-only", "SPDX license expression missing")
         _assert("riskdatascience@web.de" in str(metadata["Author-email"]), "author email missing")
         project_urls = set(metadata.get_all("Project-URL", []))
@@ -51,6 +51,8 @@ def validate_wheel(path: Path) -> dict[str, int]:
             "privacy-policy link missing from package metadata",
         )
         _assert("rwa_engine/__init__.py" in names, "Python package missing")
+        _assert("rwa_engine/formula_api.py" in names, "granular formula API missing")
+        _assert("rwa_engine/analyst_api.py" in names, "bank-analyst API missing")
         _assert("rwa_engine/py.typed" in names, "typed-package marker missing")
         _assert("rwa_engine/web/static/index.html" in names, "web application assets missing")
         _assert(
@@ -92,6 +94,8 @@ def validate_sdist(path: Path) -> dict[str, int]:
         "/README.md",
         "/pyproject.toml",
         "/docs/PYTHON_API.md",
+        "/docs/GRANULAR_ANALYST_API.md",
+        "/tests/test_granular_analyst_api.py",
         "/tests/test_public_api.py",
         "/tools/validate_distribution.py",
         "/src/rwa_engine/resources/Standards/00_manifest/sources.json",

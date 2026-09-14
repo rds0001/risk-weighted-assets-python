@@ -91,10 +91,26 @@ def _tables_hash(tables: Mapping[str, pd.DataFrame]) -> str:
 
 
 def calculate_tables(
-    tables: Mapping[str, pd.DataFrame], *, run_id: str | None = None, project_root: str | Path | None = None
+    tables: Mapping[str, pd.DataFrame], *, run_id: str | None = None,
+    project_root: str | Path | None = None,
+    parameter_overrides: pd.DataFrame | None = None,
+    override_reason: str | None = None,
+    override_approved_by: str | None = None,
 ) -> CalculationResult:
-    """Calculate canonical in-memory tables without creating Excel outputs."""
-    raw = {name: frame.copy(deep=True) for name, frame in tables.items()}
+    """Calculate canonical tables, optionally applying governed parameter overrides.
+
+    Overrides never mutate caller data and require both a business reason and an
+    approver. The returned result carries the complete old/new-value audit trail.
+    """
+    source: Mapping[str, pd.DataFrame] = tables
+    if parameter_overrides is not None:
+        from .analyst_api import override_regulatory_parameters
+
+        source = override_regulatory_parameters(
+            tables, parameter_overrides, override_reason or "", override_approved_by or ""
+        )
+    audit = getattr(source, "parameter_override_audit", None)
+    raw = {name: frame.copy(deep=True) for name, frame in source.items()}
     issues = validate_tables(raw)
     issues.extend(_validate_legal_files(raw, Path(project_root) if project_root else None))
     report = ValidationReport(tuple(_message(issue) for issue in issues))
@@ -131,4 +147,7 @@ def calculate_tables(
         validation=report,
         results=dict(applied.results),
         parallel_results=dict(parallel.results),
+        parallel_metrics=dict(parallel.metrics),
+        parallel_controls=tuple(dict(control) for control in parallel.controls),
+        parameter_override_audit=None if audit is None else audit.copy(deep=True),
     )

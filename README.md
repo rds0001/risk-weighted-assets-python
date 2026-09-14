@@ -21,6 +21,9 @@ certified regulatory reporting system. Read the [disclaimer](DISCLAIMER.md) befo
 - own funds, buffers, leverage, MREL/TLAC and capital headroom
 - IRRBB/CSRBB and ICAAP economic and normative perspectives
 - deterministic fingerprints, lineage, reconciliations and calculation controls
+- 34 public atomic regulatory formulae with explicit, analyst-controlled parameters
+- nine focused risk-domain analyses plus granular metric, table and control access
+- non-mutating parameter sensitivities with mandatory rationale, approver and audit trail
 - 16 canonical input and six output workbooks per persisted calculation
 
 ## Installation
@@ -28,7 +31,13 @@ certified regulatory reporting system. Read the [disclaimer](DISCLAIMER.md) befo
 Python 3.10 or newer is required. Install a locally built wheel with:
 
 ```bash
-python -m pip install dist/risk_weighted_assets-1.0.0-py3-none-any.whl
+python -m pip install dist/risk_weighted_assets-1.1.0-py3-none-any.whl
+```
+
+Install the latest published release from PyPI with:
+
+```bash
+python -m pip install risk-weighted-assets
 ```
 
 For development from this source tree:
@@ -36,9 +45,6 @@ For development from this source tree:
 ```bash
 python -m pip install -e '.[test,build]'
 ```
-
-Once the package has completed the separate publication process, the regular PyPI command
-will be `python -m pip install risk-weighted-assets`.
 
 ## First calculation
 
@@ -84,6 +90,23 @@ For integration without Excel I/O, use `calculate_tables(tables)` with the canon
 `dict[str, pandas.DataFrame]` contract. It returns the same structured `CalculationResult`
 without persisting output workbooks.
 
+For formula-by-formula control and focused analysis:
+
+```python
+from rwa_engine import (
+    analyze_credit_risk,
+    compare_calculation_views,
+    irb_capital_requirement,
+    regulatory_parameter,
+)
+
+print(regulatory_parameter("RWA_MULTIPLIER", "PILLAR1"))
+print(irb_capital_requirement(0.01, 0.45, 0.20, 2.5))
+credit = analyze_credit_risk(result)
+print(credit.metrics, credit.tables, credit.controls)
+print(compare_calculation_views(result))
+```
+
 ## CLI and local app
 
 ```bash
@@ -114,6 +137,7 @@ scaffold is not part of this distribution.
 
 - [documentation map](docs/README.md)
 - [public API](docs/PYTHON_API.md)
+- [granular bank-analyst API and all 34 formulae](docs/GRANULAR_ANALYST_API.md)
 - [installation and troubleshooting](docs/INSTALLATION_AND_TROUBLESHOOTING.md)
 - [architecture](docs/ARCHITECTURE.md)
 - [methodology](docs/PILLAR_1_METHODOLOGY.md)

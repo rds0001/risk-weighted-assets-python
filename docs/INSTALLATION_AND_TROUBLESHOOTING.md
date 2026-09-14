@@ -19,14 +19,14 @@ In einer neuen virtuellen Umgebung:
 python -m venv .venv
 source .venv/bin/activate              # Windows PowerShell: .venv\\Scripts\\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install dist/risk_weighted_assets-1.0.0-py3-none-any.whl
+python -m pip install dist/risk_weighted_assets-1.1.0-py3-none-any.whl
 rwa doctor
 ```
 
 Alternativ kann das sdist installiert werden:
 
 ```bash
-python -m pip install dist/risk_weighted_assets-1.0.0.tar.gz
+python -m pip install dist/risk_weighted_assets-1.1.0.tar.gz
 ```
 
 Die Veröffentlichung auf PyPI ist ein separater, nachgelagerter Freigabeschritt. Bis dahin

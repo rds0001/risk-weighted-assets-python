@@ -13,6 +13,8 @@ from typing import Any, Mapping
 
 @dataclass(frozen=True)
 class ValidationMessage:
+    """One normalized validation finding with stable machine-readable fields."""
+
     severity: str
     code: str
     table: str
@@ -23,6 +25,8 @@ class ValidationMessage:
 
 @dataclass(frozen=True)
 class ValidationReport:
+    """Immutable collection of validation messages and convenience status views."""
+
     messages: tuple[ValidationMessage, ...] = ()
 
     @property
@@ -40,6 +44,8 @@ class ValidationReport:
 
 @dataclass(frozen=True)
 class CalculationResult:
+    """Auditable applied and fully-loaded calculation result returned by the API."""
+
     status: str
     run_id: str
     engine_version: str
@@ -51,6 +57,9 @@ class CalculationResult:
     output_files: tuple[Path, ...] = ()
     results: Mapping[str, Any] = field(default_factory=dict, repr=False)
     parallel_results: Mapping[str, Any] = field(default_factory=dict, repr=False)
+    parallel_metrics: Mapping[str, Any] = field(default_factory=dict, repr=False)
+    parallel_controls: tuple[Mapping[str, Any], ...] = field(default_factory=tuple, repr=False)
+    parameter_override_audit: Any = field(default=None, repr=False)
 
     @property
     def controls_passed(self) -> int:
