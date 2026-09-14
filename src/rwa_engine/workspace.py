@@ -46,6 +46,7 @@ class Workspace:
 
 
 def default_workspace() -> Workspace:
+    """Return the configured workspace or a local ``rwa-workspace`` default."""
     configured = os.environ.get(WORKSPACE_ENVIRONMENT_VARIABLE)
     root = Path(configured).expanduser() if configured else Path.cwd() / "rwa-workspace"
     return Workspace(root.resolve())
@@ -79,6 +80,7 @@ def create_workspace(path: str | Path, *, overwrite: bool = False) -> Workspace:
 
 
 def list_reference_profiles() -> tuple[dict[str, Any], ...]:
+    """Return metadata for all bundled deterministic synthetic bank profiles."""
     profiles = resource("daten", "konfiguration", "profiles")
     values = []
     for item in sorted(profiles.iterdir(), key=lambda entry: entry.name):
@@ -96,6 +98,7 @@ def list_reference_profiles() -> tuple[dict[str, Any], ...]:
 
 
 def list_reference_datasets() -> tuple[dict[str, Any], ...]:
+    """Return identifiers and metadata for bundled calculation-ready datasets."""
     root = resource("daten", "rechenlaeufe")
     values = []
     for day in sorted(root.iterdir(), key=lambda item: item.name):
@@ -117,4 +120,5 @@ def list_reference_datasets() -> tuple[dict[str, Any], ...]:
 
 
 def regulatory_sources() -> tuple[dict[str, Any], ...]:
+    """Return official-source links and archival checksums without bundled documents."""
     return tuple(read_json("Standards", "00_manifest", "sources.json").get("sources", []))

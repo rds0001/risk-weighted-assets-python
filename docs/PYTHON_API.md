@@ -40,6 +40,34 @@ print(result.results["TREA_Summary"])
 `calculate_tables()` erwartet die kanonische Zuordnung von Tabellennamen zu
 `pandas.DataFrame`. Es kopiert die Inputs, validiert vollständig und schreibt keine Dateien.
 `results` enthält die angewandte 2026-Sicht, `parallel_results` die Fully-loaded-Sicht.
+Ab Version 1.1.0 stehen zusätzlich die getrennten `parallel_metrics` und
+`parallel_controls` zur Verfügung. Die [granulare Analysten-API](GRANULAR_ANALYST_API.md)
+dokumentiert alle 34 einzeln aufrufbaren Formeln, Parameter-Overrides, Ergebniszugriffe
+und neun fachlichen Analysesichten.
+
+## Granulare Analysten-API
+
+```python
+from rwa_engine import (
+    analyze_credit_risk,
+    compare_calculation_views,
+    irb_capital_requirement,
+    regulatory_parameter,
+)
+
+print(regulatory_parameter("RWA_MULTIPLIER", "PILLAR1"))
+print(irb_capital_requirement(0.01, 0.45, 0.20, 2.5))
+
+credit = analyze_credit_risk(result)
+print(credit.metrics, credit.tables, credit.controls)
+print(compare_calculation_views(result))
+```
+
+Alle öffentlichen Namen sind direkt aus `rwa_engine` importierbar. Formeln akzeptieren
+bei aufsichtsrechtlichem Parameterbedarf optional `parameters=`; ohne Angabe wird die
+gebündelte versionierte Parametertabelle verwendet. Für bankseitige Sensitivitäten sind
+`override_regulatory_parameters()` oder die entsprechenden Argumente von
+`calculate_tables()` zu verwenden, damit Alt-/Neuwert, Grund und Freigabe erhalten bleiben.
 
 ## Ressourcen und Workspace
 
@@ -67,6 +95,8 @@ print(regulatory_sources())
 - `validation` als `ValidationReport`
 - bei Dataset-Läufen `output_dir` und `output_files`
 - bei In-Memory-Läufen `results` und `parallel_results`
+- bei In-Memory-Läufen außerdem `parallel_metrics`, `parallel_controls` und
+  `parameter_override_audit`
 - Komfortwerten `controls_passed`, `control_count` und `successful`
 
 `ValidationReport` bietet `messages`, `errors`, `warnings` und `valid`. Eine einzelne

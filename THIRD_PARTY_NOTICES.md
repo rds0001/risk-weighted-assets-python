@@ -4,7 +4,7 @@ Copyright (C) 2026 RiskDataScience GmbH. Licensed under GPL-3.0-only.
 
 The Python package depends on independently licensed open-source projects. They are not
 vendored in this repository and are installed from the user's configured package index.
-The following list records the direct dependencies declared for version 1.0.0; the package
+The following list records the direct dependencies declared for version 1.1.0; the package
 metadata distributed by each upstream project is authoritative.
 
 | Project | Purpose | Upstream license |

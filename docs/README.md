@@ -10,6 +10,8 @@ contracts and governance evidence so that each can be reviewed independently.
 - [Installation and troubleshooting](INSTALLATION_AND_TROUBLESHOOTING.md): wheel/source
   installation, workspace setup, dependency diagnosis, backup and recovery.
 - [Python API](PYTHON_API.md): stable entry points, result objects, exceptions and examples.
+- [Granular bank-analyst API](GRANULAR_ANALYST_API.md): all 34 atomic formulae,
+  governed parameters, result/control accessors and nine risk-domain analyses.
 - [CLI and web application](CLI_AND_WEBAPP.md): command reference, local UI and security.
 - [Resources and workspaces](RESOURCES_AND_WORKSPACES.md): immutable package data,
   writable exports, environment variables and reproducibility.
@@ -41,5 +43,5 @@ contracts and governance evidence so that each can be reviewed independently.
   and pre-publication checks.
 - [Glossary and appendix](GLOSSARY_AND_APPENDIX.md): terms, metrics and reproducibility.
 
-The detailed German methodology is the fachlich/technical reference for version 1.0.0.
+The detailed German methodology is the fachlich/technical reference for version 1.1.0.
 Root-level English documents define the public package, licensing and contribution boundary.

@@ -36,8 +36,9 @@ gh repo create rds0001/risk-weighted-assets-python \
   --description "Auditable CRR III RWA, capital, IRRBB and ICAAP Python reference library"
 ```
 
-Do not create tag `v1.0.0` or a GitHub Release yet. Tags, Trusted Publishing, TestPyPI and
-PyPI belong to the subsequent controlled release steps.
+For version 1.1.0, merge the reviewed change and require a green CI run before creating
+tag `v1.1.0`. Publishing that GitHub Release triggers the separately controlled PyPI
+Trusted-Publishing workflow; an existing PyPI version can never be overwritten.
 
 ## First CI run
 

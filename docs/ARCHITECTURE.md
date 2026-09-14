@@ -91,7 +91,7 @@ durch `RWA_WORKSPACE` konfigurierte Pfade.
 
 ## Operationalisierter Implementierungsstand
 
-**Version:** 1.0.0  
+**Version:** 1.1.0
 **Referenzstichtag:** 31.08.2026
 
 **Daten-/Regeltrennung:** Geschäfts-, Markt-, Szenario-, Generator- und

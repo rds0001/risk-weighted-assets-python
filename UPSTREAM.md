@@ -5,7 +5,7 @@ This distribution was derived from the approved public-release snapshot of
 
 - upstream commit: `95a159e6046afdf9e58899a1af5543d01cbf7601`
 - package baseline: 13 September 2026
-- package version: `1.0.0`
+- package baseline: `1.0.0`; current package version: `1.1.0`
 
 The calculation methodology, canonical Excel contracts, synthetic reference data,
 reference outputs and documentation were retained. Repository-specific launchers and

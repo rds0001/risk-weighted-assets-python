@@ -34,7 +34,7 @@ Logging und sichere Laufzeit.
 ## Technischer Abnahme- und Fortsetzungsstand
 
 **Stand:** 01.09.2026  
-**Engine-Version:** 1.0.0  
+**Engine-Version:** 1.1.0
 **Referenzstichtag:** 31.08.2026
 
 ## Abgenommener technischer Stand
