@@ -12,6 +12,8 @@ All notable public changes are documented here. Dates use ISO 8601.
   configuration and source metadata as immutable package resources.
 - Added writable workspaces, resource export and installed-artifact verification.
 - Added package, archive and clean-environment smoke tests and library documentation.
+- Added directly accessible corporate imprint and privacy information to the package
+  metadata, project documentation and local browser application.
 
 ## Upstream 1.0.0 — 2026-09-10
 

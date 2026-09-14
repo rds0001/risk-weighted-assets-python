@@ -71,6 +71,8 @@ Documentation = "https://github.com/rds0001/risk-weighted-assets-python/tree/mai
 Repository = "https://github.com/rds0001/risk-weighted-assets-python.git"
 Issues = "https://github.com/rds0001/risk-weighted-assets-python/issues"
 Changelog = "https://github.com/rds0001/risk-weighted-assets-python/blob/main/CHANGELOG.md"
+Imprint = "https://riskdatascience.net/impressum/"
+"Privacy Policy" = "https://riskdatascience.net/datenschutzerklaerung/"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

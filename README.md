@@ -130,6 +130,19 @@ python -m twine check dist/*
 python tools/validate_distribution.py dist
 ```
 
+## Legal and privacy
+
+This project is published by RiskDataScience GmbH. The legally binding company
+information is available in the [imprint](https://riskdatascience.net/impressum/), and
+information about the processing of personal data is provided in the
+[privacy policy](https://riskdatascience.net/datenschutzerklaerung/).
+
+The installed library contains no telemetry, analytics or tracking and does not transmit
+portfolio, calculation or usage data to RiskDataScience GmbH. The optional browser
+application communicates only with the locally started RWA server. Interactions performed
+on GitHub or PyPI are additionally subject to the terms and privacy practices of those
+platforms.
+
 ## License
 
 Copyright © 2026 RiskDataScience GmbH. Original content is licensed under the

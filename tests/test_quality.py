@@ -13,6 +13,11 @@ from rwa_engine.parameters import ParameterError, ParameterStore
 from rwa_engine.pipeline import _validate_legal_files
 from rwa_engine.synthetic import generate_synthetic_tables
 
+LEGAL_URLS = (
+    "https://riskdatascience.net/impressum/",
+    "https://riskdatascience.net/datenschutzerklaerung/",
+)
+
 
 def parameter_store() -> ParameterStore:
     config = load_regulatory_config("daten/konfiguration/regulatory/crr3_eu_2026_v1.yaml")
@@ -84,6 +89,18 @@ def test_validation_rejects_invalid_pd_and_missing_business_key():
 
 def test_legal_sources_are_local_or_have_verified_external_provenance():
     assert not _validate_legal_files(generate_synthetic_tables())
+
+
+def test_canonical_legal_links_are_visible_in_metadata_readme_and_app():
+    root = Path(__file__).resolve().parents[1]
+    public_surfaces = (
+        root / "pyproject.toml",
+        root / "README.md",
+        root / "src" / "rwa_engine" / "web" / "static" / "index.html",
+    )
+    for path in public_surfaces:
+        content = path.read_text(encoding="utf-8")
+        assert all(url in content for url in LEGAL_URLS), f"legal link missing from {path.name}"
 
 
 @given(

@@ -41,6 +41,15 @@ def validate_wheel(path: Path) -> dict[str, int]:
         _assert(metadata["Version"] == "1.0.0", "unexpected distribution version")
         _assert(metadata["License-Expression"] == "GPL-3.0-only", "SPDX license expression missing")
         _assert("riskdatascience@web.de" in str(metadata["Author-email"]), "author email missing")
+        project_urls = set(metadata.get_all("Project-URL", []))
+        _assert(
+            "Imprint, https://riskdatascience.net/impressum/" in project_urls,
+            "corporate imprint link missing from package metadata",
+        )
+        _assert(
+            "Privacy Policy, https://riskdatascience.net/datenschutzerklaerung/" in project_urls,
+            "privacy-policy link missing from package metadata",
+        )
         _assert("rwa_engine/__init__.py" in names, "Python package missing")
         _assert("rwa_engine/py.typed" in names, "typed-package marker missing")
         _assert("rwa_engine/web/static/index.html" in names, "web application assets missing")
