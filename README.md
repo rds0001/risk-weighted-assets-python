@@ -21,17 +21,22 @@ certified regulatory reporting system. Read the [disclaimer](DISCLAIMER.md) befo
 - own funds, buffers, leverage, MREL/TLAC and capital headroom
 - IRRBB/CSRBB and ICAAP economic and normative perspectives
 - deterministic fingerprints, lineage, reconciliations and calculation controls
-- 34 public atomic regulatory formulae with explicit, analyst-controlled parameters
+- 38 public atomic regulatory formulae with explicit, analyst-controlled parameters
 - nine focused risk-domain analyses plus granular metric, table and control access
 - non-mutating parameter sensitivities with mandatory rationale, approver and audit trail
 - 16 canonical input and six output workbooks per persisted calculation
+
+## Credit supporting factors (1.2.0)
+
+SA/IRB eligibility, combined factors, legacy compatibility and audit fields are
+explained in [Supporting factors](docs/SUPPORTING_FACTORS.md).
 
 ## Installation
 
 Python 3.10 or newer is required. Install a locally built wheel with:
 
 ```bash
-python -m pip install dist/risk_weighted_assets-1.1.0-py3-none-any.whl
+python -m pip install dist/risk_weighted_assets-1.2.0-py3-none-any.whl
 ```
 
 Install the latest published release from PyPI with:
@@ -137,7 +142,7 @@ scaffold is not part of this distribution.
 
 - [documentation map](docs/README.md)
 - [public API](docs/PYTHON_API.md)
-- [granular bank-analyst API and all 34 formulae](docs/GRANULAR_ANALYST_API.md)
+- [granular bank-analyst API and all 38 formulae](docs/GRANULAR_ANALYST_API.md)
 - [installation and troubleshooting](docs/INSTALLATION_AND_TROUBLESHOOTING.md)
 - [architecture](docs/ARCHITECTURE.md)
 - [methodology](docs/PILLAR_1_METHODOLOGY.md)

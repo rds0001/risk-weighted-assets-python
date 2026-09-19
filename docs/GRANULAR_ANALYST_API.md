@@ -4,9 +4,9 @@ Copyright © 2026 RiskDataScience GmbH. Licensed under GPL-3.0-only.
 
 ## Purpose and control model
 
-Version 1.1.0 exposes the calculation building blocks that a bank analyst needs to
+Version 1.2.0 exposes the calculation building blocks that a bank analyst needs to
 inspect, independently reproduce and sensitivity-test the engine. The public surface is
-not limited to an end-to-end calculation: it provides 34 atomic regulatory formulae,
+not limited to an end-to-end calculation: it provides 38 atomic regulatory formulae,
 nine domain views, the complete parameter and formula inventories, bitemporal selection,
 table contracts, detailed results and individual controls.
 
@@ -50,7 +50,7 @@ and approver fields. The audit contains sequence, key, dimensions, old value, ne
 reason and approver. `calculate_tables(..., parameter_overrides=..., override_reason=...,
 override_approved_by=...)` provides the same controlled operation in one call.
 
-## Formula API: 34 public functions
+## Formula API: 38 public functions
 
 ### Standardised credit risk and CRM
 
@@ -71,6 +71,17 @@ override_approved_by=...)` provides the same controlled operation in one call.
 | `irb_maturity_coefficient(...)` | maturity coefficient `b(PD)` |
 | `irb_maturity_factor(...)` | bounded effective-maturity multiplier |
 | `irb_capital_requirement(...)` | unexpected-loss capital rate, including defaulted treatment |
+
+### Credit supporting factors (1.2.0)
+
+| Function | Controlled result |
+|---|---|
+| `sme_supporting_factor(...)` | Article 501 weighted factor from E* in EUR |
+| `infrastructure_supporting_factor(...)` | configured Article 501a factor |
+| `apply_credit_supporting_factors(...)` | pre-support RWEA times independently selected factors |
+| `irb_risk_weighted_assets(...)` | EAD times multiplier times K times factors |
+
+See [supporting factors](SUPPORTING_FACTORS.md) for eligibility and input/output fields.
 
 ### Counterparty, SFT, securitisation, CVA and settlement risk
 

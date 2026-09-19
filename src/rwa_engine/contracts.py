@@ -7,8 +7,10 @@ erhält dieselben bitemporalen Metadaten.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Mapping
+
+from .supporting import IRB_SUPPORT_FIELDS, SUPPORT_FIELDS
 
 COMMON_COLUMNS = (
     "record_id",
@@ -970,6 +972,12 @@ TABLE_SPECS: Mapping[str, TableSpec] = {
 
 
 WORKBOOKS = tuple(dict.fromkeys(spec.workbook for spec in TABLE_SPECS.values()))
+
+
+# Additive schema: old workbooks are normalized before required-column checks.
+for _name, _defaults in (("sa_classification", SUPPORT_FIELDS), ("irb_parameter", IRB_SUPPORT_FIELDS)):
+    _spec = TABLE_SPECS[_name]
+    TABLE_SPECS[_name] = replace(_spec, columns=_spec.columns + tuple(k for k in _defaults if k not in _spec.columns))
 
 
 def specs_for_workbook(workbook: str) -> dict[str, TableSpec]:

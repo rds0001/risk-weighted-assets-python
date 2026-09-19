@@ -333,7 +333,51 @@ def frtb_quadratic_charge(values: Sequence[float], correlation: float, *,
     return sqrt(max(total, 0.0))
 
 
+
+def sme_supporting_factor(total_amount_owed_eur: float, *,
+                          parameters: ParameterStore | pd.DataFrame | None = None) -> float:
+    """Return Article 501's weighted factor from positive E* in EUR, not individual EAD.
+
+    E* must include connected-client/institution-group amounts and the residential
+    collateral exclusion/fallback required by Article 501. This numeric helper
+    does not certify eligibility. Threshold and both rates are governed parameters.
+    """
+    from .supporting import sme_factor
+    return sme_factor(total_amount_owed_eur, _store(parameters))
+
+
+def infrastructure_supporting_factor(*,
+                                     parameters: ParameterStore | pd.DataFrame | None = None) -> float:
+    """Return Article 501a's configured factor; eligibility must be established separately."""
+    from .supporting import infrastructure_factor
+    return infrastructure_factor(_store(parameters))
+
+
+def apply_credit_supporting_factors(rwea: float, *, sme_factor: float = 1.0,
+                                   infrastructure_factor: float = 1.0) -> float:
+    """Apply independent factors in (0,1] once to non-negative pre-support RWEA.
+
+    Both factors may apply together when BOTH sets of legal conditions are met.
+    This pure arithmetic helper does not attest regulatory eligibility.
+    """
+    from .supporting import apply_factors
+    return apply_factors(rwea, sme_factor, infrastructure_factor)
+
+
+def irb_risk_weighted_assets(ead: float, capital_requirement: float, *,
+                            sme_factor: float = 1.0, infrastructure_factor: float = 1.0,
+                            parameters: ParameterStore | pd.DataFrame | None = None) -> float:
+    """Return EAD * configured RWA multiplier * K * supporting factors.
+
+    K is the unadjusted capital-requirement rate, e.g. irb_capital_requirement().
+    Eligibility is the caller's responsibility here; table APIs enforce evidence.
+    """
+    from .supporting import irb_rwea
+    return irb_rwea(ead, capital_requirement, _store(parameters), sme_factor, infrastructure_factor)
+
 FORMULA_FUNCTIONS = (
+    sme_supporting_factor, infrastructure_supporting_factor,
+    apply_credit_supporting_factors, irb_risk_weighted_assets,
     sa_exposure_value, sa_risk_weight, real_estate_risk_weight, crm_maturity_factor,
     crm_adjusted_exposure, irb_asset_correlation, irb_retail_correlation,
     irb_maturity_coefficient, irb_maturity_factor, irb_capital_requirement,

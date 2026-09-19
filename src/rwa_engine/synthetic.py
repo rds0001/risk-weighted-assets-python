@@ -21,6 +21,7 @@ from .config_io import ConfigurationError, load_profile, load_regulatory_config,
 from .contracts import COMMON_COLUMNS, TABLE_SPECS
 from .excel_io import read_input_workbooks, validate_tables, write_input_workbooks
 from .resources import materialized_resource_root
+from .supporting import normalise_support_columns
 
 
 def _profile_resource_root(config_root: Path | None) -> Path:
@@ -192,6 +193,7 @@ def generate_synthetic_tables(
     _shift_temporal_columns(tables, profile, target_as_of)
     _materialize_rules(tables, profile, target_as_of, resource_root)
     _update_run_control(tables, as_of=target_as_of, seed=effective_seed, profile_id=bank_profile)
+    tables = {name: normalise_support_columns(frame, name) for name, frame in tables.items()}
     _apply_transformations(tables, profile)
     errors = [issue for issue in validate_tables(tables) if issue.severity == "ERROR"]
     if errors:

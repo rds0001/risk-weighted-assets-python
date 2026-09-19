@@ -9,6 +9,11 @@ metadata:
 # RWA_IN_14_Rules_Parameters.xlsx materialisiert. Die Python-Engine enthält
 # bewusst keine regulatorischen Tabellen oder Schwellenwerte.
 parameters:
+  - {key: SUPPORTING_FACTOR, d1: SME_THRESHOLD_EUR, value: 2500000, unit: EUR, ref: CRR Art. 501}
+  - {key: SUPPORTING_FACTOR, d1: SME_LOWER, value: 0.7619, unit: RATE, ref: CRR Art. 501}
+  - {key: SUPPORTING_FACTOR, d1: SME_UPPER, value: 0.85, unit: RATE, ref: CRR Art. 501}
+  - {key: SUPPORTING_FACTOR, d1: SME_SALES_MAX_EUR, value: 50000000, unit: EUR, ref: CRR Art. 5(9) / 501}
+  - {key: SUPPORTING_FACTOR, d1: INFRASTRUCTURE, value: 0.75, unit: RATE, ref: CRR Art. 501a}
   - {key: SA_CCF, d1: CLASS_1, value: 1.00, unit: RATE, ref: CRR Art. 111 / Annex I}
   - {key: SA_CCF, d1: CLASS_2, value: 0.50, unit: RATE, ref: CRR Art. 111 / Annex I}
   - {key: SA_CCF, d1: CLASS_3, value: 0.40, unit: RATE, ref: CRR Art. 111 / Annex I}
@@ -309,6 +314,7 @@ parameter_tables:
     ref: CRR Art. 263 Tabelle 2 / Art. 264 Tabelle 4
 
 formula_registry:
+  CRR_501_501A: Credit supporting factors; explicit eligibility; post-RWA adjustment
   SA_EAD: KSA
   SA_RW: KSA
   SA_EAD/SA_RW: KSA
