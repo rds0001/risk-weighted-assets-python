@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
 title: "risk-weighted-assets: Auditable CRR III RWA Reference Library"
 version: 1.2.0
-date-released: 2026-09-14
+date-released: 2026-09-19
 authors:
   - family-names: "RiskDataScience GmbH"
 type: software
