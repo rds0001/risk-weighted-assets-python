@@ -15,6 +15,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 from .contracts import COMMON_COLUMNS, TABLE_SPECS, TableSpec, specs_for_workbook
+from .supporting import IRB_SUPPORT_FIELDS, SUPPORT_FIELDS, normalise_support_columns, support_issues
 
 
 @dataclass
@@ -145,7 +146,7 @@ def write_input_workbooks(directory: Path, tables: Mapping[str, pd.DataFrame]) -
                             "sheet": spec.sheet,
                             "excel_table": spec.table_name,
                             "field": col,
-                            "required": col in spec.all_columns,
+                            "required": col not in (IRB_SUPPORT_FIELDS if logical_name == "irb_parameter" else SUPPORT_FIELDS if logical_name == "sa_classification" else {}),
                             "description": col.replace("_", " "),
                         }
                     )
@@ -166,14 +167,15 @@ def write_input_workbooks(directory: Path, tables: Mapping[str, pd.DataFrame]) -
             pd.DataFrame(
                 [
                     {
-                        "template_version": "1.0.0",
+                        "template_version": "1.2.0",
                         "change_date": date.today(),
-                        "change": "Initialer kanonischer Datenvertrag",
+                        "change": "Additive optionale Unterstützungsfaktoren für SA und IRB",
                     }
                 ]
             ).to_excel(writer, sheet_name="CHANGELOG", index=False)
             for logical_name, spec in specs.items():
                 frame = tables.get(logical_name, pd.DataFrame(columns=spec.all_columns)).copy()
+                frame = normalise_support_columns(frame, logical_name)
                 for col in spec.all_columns:
                     if col not in frame.columns:
                         frame[col] = None
@@ -197,6 +199,7 @@ def read_input_workbooks(directory: Path) -> tuple[dict[str, pd.DataFrame], list
         except ValueError as exc:
             issues.append(ValidationIssue("ERROR", "MISSING_SHEET", logical_name, "", "", str(exc)))
             continue
+        frame = normalise_support_columns(frame, logical_name)
         missing = [c for c in spec.all_columns if c not in frame.columns]
         if missing:
             issues.append(
@@ -462,6 +465,7 @@ def validate_tables(tables: Mapping[str, pd.DataFrame]) -> list[ValidationIssue]
                     "Curvature verlangt Up- und Down-Revaluation",
                 )
             )
+    issues.extend(ValidationIssue(*issue) for issue in support_issues(tables))
     return issues
 
 

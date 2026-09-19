@@ -38,7 +38,8 @@ def test_full_run_creates_versioned_excel_package(tmp_path: Path):
     assert bool(fully_loaded["floor_binding"])
     audit = pd.read_excel(files[-1], sheet_name="Validation_Issues")
     controls = pd.read_excel(files[-1], sheet_name="Reconciliations")
-    assert audit.empty
+    assert set(audit["code"]) <= {"LEGACY_SA_SUPPORTING_FACTOR"}
+    assert not (audit["severity"] == "ERROR").any()
     assert controls["passed"].all()
     pillar1 = pd.read_excel(files[1], sheet_name="SA_Detail")
     assert {

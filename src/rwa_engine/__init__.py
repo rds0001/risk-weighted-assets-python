@@ -1,6 +1,6 @@
 """Public interface of the institution-neutral RWA reference library."""
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 from .analyst_api import (
     ControlledTables,
@@ -46,6 +46,7 @@ from .exceptions import (
 from .formula_api import (
     aggregate_correlated_capital,
     applicable_output_floor_factor,
+    apply_credit_supporting_factors,
     apply_output_floor,
     business_indicator_component,
     crm_adjusted_exposure,
@@ -53,11 +54,13 @@ from .formula_api import (
     cva_basic_approach_capital,
     frtb_quadratic_charge,
     frtb_scenario_correlation,
+    infrastructure_supporting_factor,
     irb_asset_correlation,
     irb_capital_requirement,
     irb_maturity_coefficient,
     irb_maturity_factor,
     irb_retail_correlation,
+    irb_risk_weighted_assets,
     irrbb_scenario_shock,
     irrbb_shocked_zero_rate,
     npe_secured_coverage_factor,
@@ -77,6 +80,7 @@ from .formula_api import (
     securitisation_ssfa_risk_weight,
     settlement_risk_factor,
     sft_exposure_value,
+    sme_supporting_factor,
     tier2_eligible_amount,
 )
 from .models import CalculationResult, ValidationMessage, ValidationReport
@@ -91,6 +95,8 @@ from .workspace import (
 )
 
 __all__ = [
+    "sme_supporting_factor", "infrastructure_supporting_factor",
+    "apply_credit_supporting_factors", "irb_risk_weighted_assets",
     "CalculationError",
     "CalculationResult",
     "ControlledTables",

@@ -9,7 +9,7 @@ from rwa_engine.synthetic import generate_synthetic_dataset, generate_synthetic_
 
 
 def test_public_api_is_explicit_and_versioned():
-    assert rwa_engine.__version__ == "1.1.0"
+    assert rwa_engine.__version__ == "1.2.0"
     assert {"calculate_dataset", "calculate_tables", "validate_dataset", "create_workspace"}.issubset(
         rwa_engine.__all__
     )

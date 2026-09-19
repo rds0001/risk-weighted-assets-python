@@ -2,6 +2,14 @@
 
 All notable public changes are documented here. Dates use ISO 8601.
 
+## 1.2.0 — 2026-09-19
+
+- Added explicit, auditable IRB SME/infrastructure support and combined application.
+- Added four public formula helpers (38 total), optional compatible input fields,
+  before/after RWA and SA-comparison diagnostics; K and EL remain unchanged.
+- Retained historical SA arithmetic with an explicit unverified-legacy warning.
+- Added targeted formula, eligibility, floor, Excel and cross-language regressions.
+
 ## 1.1.0 — 2026-09-14
 
 - Added 34 individually callable, parameter-controlled regulatory formula functions,

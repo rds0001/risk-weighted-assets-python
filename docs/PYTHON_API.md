@@ -42,7 +42,7 @@ print(result.results["TREA_Summary"])
 `results` enthält die angewandte 2026-Sicht, `parallel_results` die Fully-loaded-Sicht.
 Ab Version 1.1.0 stehen zusätzlich die getrennten `parallel_metrics` und
 `parallel_controls` zur Verfügung. Die [granulare Analysten-API](GRANULAR_ANALYST_API.md)
-dokumentiert alle 34 einzeln aufrufbaren Formeln, Parameter-Overrides, Ergebniszugriffe
+dokumentiert alle 38 einzeln aufrufbaren Formeln, Parameter-Overrides, Ergebniszugriffe
 und neun fachlichen Analysesichten.
 
 ## Granulare Analysten-API

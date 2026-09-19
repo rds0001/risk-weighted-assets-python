@@ -23,8 +23,12 @@ def result(tables):
     return rwa.calculate_tables(tables, run_id="GRANULAR-API-TEST")
 
 
-def test_exactly_34_public_documented_formulae_execute():
+def test_exactly_38_public_documented_formulae_execute():
     calls = {
+        "sme_supporting_factor": lambda: rwa.sme_supporting_factor(5e6),
+        "infrastructure_supporting_factor": lambda: rwa.infrastructure_supporting_factor(),
+        "apply_credit_supporting_factors": lambda: rwa.apply_credit_supporting_factors(100, sme_factor=.7619),
+        "irb_risk_weighted_assets": lambda: rwa.irb_risk_weighted_assets(1e6, .08),
         "sa_exposure_value": lambda: rwa.sa_exposure_value(100, "CLASS_2", committed_undrawn=40),
         "sa_risk_weight": lambda: rwa.sa_risk_weight("CENTRAL_GOVERNMENT", 1),
         "real_estate_risk_weight": lambda: rwa.real_estate_risk_weight(80, 100, "RESIDENTIAL", True, 1),
@@ -63,7 +67,7 @@ def test_exactly_34_public_documented_formulae_execute():
         "frtb_scenario_correlation": lambda: rwa.frtb_scenario_correlation(.25, "HIGH"),
         "frtb_quadratic_charge": lambda: rwa.frtb_quadratic_charge([1, -2], .5),
     }
-    assert len(FORMULA_FUNCTIONS) == len(calls) == 34
+    assert len(FORMULA_FUNCTIONS) == len(calls) == 38
     assert set(calls) == {function.__name__ for function in FORMULA_FUNCTIONS}
     assert all(name in rwa.__all__ for name in calls)
     assert all(inspect.getdoc(function) for function in FORMULA_FUNCTIONS)

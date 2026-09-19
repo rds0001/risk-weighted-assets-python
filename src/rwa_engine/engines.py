@@ -12,6 +12,7 @@ import pandas as pd
 
 from . import formulas as f
 from .parameters import ParameterStore
+from .supporting import resolve_for_exposure
 
 
 def _num(value, default=0.0) -> float:
@@ -145,7 +146,8 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
         sub_rw = _num(r.get("substitution_rw", rw), rw)
         rwea_pre = ead * rw
         rwea_post = unprotected * rw + protected * sub_rw
-        sf = _num(r.get("supporting_factor", 1), 1)
+        support = resolve_for_exposure(t, r, p, approach="SA")
+        sf = support["supporting_factor"]
         rwea_final = rwea_post * sf
         rows.append(
             {
@@ -161,7 +163,9 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
                 "substitution_rw": sub_rw,
                 "rwea_pre_crm": rwea_pre,
                 "rwea_post_crm": rwea_post,
-                "supporting_factor": sf,
+                **support,
+                "rwea_pre_supporting_factor": rwea_post,
+                "supporting_factor_relief": rwea_post - rwea_final,
                 "rwea": rwea_final,
                 "actual_rwea": rwea_final if r["approach"] == "KSA" else 0.0,
                 "shadow_rwea": rwea_final,
@@ -232,7 +236,9 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
                 params=p,
             )
             rw = p.get("RWA_MULTIPLIER", "PILLAR1") * k
-            rwea = ead * rw
+            support = resolve_for_exposure(t, r, p, approach="IRB")
+            rwea_before = ead * rw
+            rwea = rwea_before * support["supporting_factor"]
             el_rate = _num(r["elbe"]) if defaulted else pdv * lgd
             coverage = _num(r["specific_credit_adjustments"]) + _num(r["general_credit_adjustments"])
             el = ead * el_rate
@@ -248,6 +254,10 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
                     "m": _num(r["maturity_years"]),
                     "k": k,
                     "rw": rw,
+                    **support,
+                    "rwea_pre_supporting_factor": rwea_before,
+                    "supporting_factor_relief": rwea_before - rwea,
+                    "effective_rw": rw * support["supporting_factor"],
                     "rwea": rwea,
                     "el_rate": el_rate,
                     "el_amount": el,
@@ -259,6 +269,18 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
                 }
             )
         irb_result = pd.DataFrame(irows)
+    if irb_result.empty:
+        for field in ("sme_supporting_factor", "infrastructure_supporting_factor", "supporting_factor",
+                      "supporting_factor_type", "supporting_factor_status", "supporting_factor_reference",
+                      "supporting_factor_approved_by", "supporting_factor_formula_id",
+                      "rwea_pre_supporting_factor", "supporting_factor_relief", "effective_rw"):
+            irb_result[field] = pd.Series(dtype="object")
+    comparison = sa_result.set_index("exposure_id")["supporting_factor"].to_dict()
+    irb_result["sa_comparison_supporting_factor"] = irb_result["exposure_id"].map(comparison)
+    irb_result["supporting_factor_path_difference"] = (
+        (pd.to_numeric(irb_result["supporting_factor"]) -
+         pd.to_numeric(irb_result["sa_comparison_supporting_factor"])).abs() > 1e-10
+    )
     out.results["IRB_Detail"] = irb_result
     out.metrics["RWEA_IRB"] = float(irb_result["rwea"].sum()) if not irb_result.empty else 0.0
     out.metrics["IRB_EL"] = float(irb_result["el_amount"].sum()) if not irb_result.empty else 0.0

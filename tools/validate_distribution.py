@@ -38,7 +38,7 @@ def validate_wheel(path: Path) -> dict[str, int]:
         _assert(len(metadata_names) == 1, "wheel must contain exactly one METADATA file")
         metadata = BytesParser(policy=default).parsebytes(archive.read(metadata_names[0]))
         _assert(metadata["Name"] == "risk-weighted-assets", "unexpected distribution name")
-        _assert(metadata["Version"] == "1.1.0", "unexpected distribution version")
+        _assert(metadata["Version"] == "1.2.0", "unexpected distribution version")
         _assert(metadata["License-Expression"] == "GPL-3.0-only", "SPDX license expression missing")
         _assert("riskdatascience@web.de" in str(metadata["Author-email"]), "author email missing")
         project_urls = set(metadata.get_all("Project-URL", []))
