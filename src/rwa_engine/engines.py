@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 
 from . import formulas as f
+from .irb import default_flag, effective_pd, resolve, treatment_for
 from .parameters import ParameterStore
 from .supporting import resolve_for_exposure
 
@@ -207,11 +208,12 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
         )
         irows = []
         for _, r in base.iterrows():
-            pdv = max(_num(r["pd_estimate"]), _num(r["pd_floor"]))
+            defaulted = default_flag(r["default_flag"])
+            pdv = effective_pd(r["pd_estimate"], defaulted, r["pd_floor"])
             lgd = max(_num(r["lgd_estimate"]), _num(r["lgd_floor"]))
             ead = max(_num(r["ead_estimate"]), _num(r["ead_floor"]))
-            defaulted = _bool(r["default_flag"])
             subclass = str(r["irb_subclass"])
+            treatment = treatment_for(str(r["irb_approach"]), subclass)
             retail = subclass.startswith("RETAIL")
             corr = (
                 f.retail_correlation(pdv, subclass, params=p)
@@ -232,14 +234,15 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
                 _num(r["maturity_years"], 1),
                 apply_maturity_adjustment=not retail,
                 defaulted=defaulted,
-                elbe=_num(r["elbe"]),
+                elbe=r["elbe"],
                 params=p,
+                lgd_treatment=treatment,
             )
             rw = p.get("RWA_MULTIPLIER", "PILLAR1") * k
             support = resolve_for_exposure(t, r, p, approach="IRB")
             rwea_before = ead * rw
             rwea = rwea_before * support["supporting_factor"]
-            el_rate = _num(r["elbe"]) if defaulted else pdv * lgd
+            _, _, el_rate = resolve(pdv, lgd, defaulted, r["elbe"], treatment)
             coverage = _num(r["specific_credit_adjustments"]) + _num(r["general_credit_adjustments"])
             el = ead * el_rate
             irows.append(
@@ -249,6 +252,9 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
                     "subclass": subclass,
                     "ead": ead,
                     "pd": pdv,
+                    "pd_input": float(r["pd_estimate"]),
+                    "defaulted": defaulted,
+                    "lgd_treatment": treatment,
                     "lgd": lgd,
                     "r": corr,
                     "m": _num(r["maturity_years"]),

@@ -1,5 +1,7 @@
 # Granular bank-analyst API
 
+Version 1.2.1: [IRB default correction and API migration](IRB_DEFAULT_CORRECTION.md).
+
 Copyright © 2026 RiskDataScience GmbH. Licensed under GPL-3.0-only.
 
 ## Purpose and control model

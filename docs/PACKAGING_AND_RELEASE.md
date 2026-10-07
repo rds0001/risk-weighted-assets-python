@@ -46,6 +46,6 @@ Werten eingerichtet werden:
 - Workflow filename: `publish.yml`
 - Environment name: `pypi`
 
-Für diese Erweiterung darf erst danach das Release `v1.1.0` publiziert werden. Ein publiziertes Artefakt wird
+Für die FIRB-Korrektur ist nach bestandenen Release-Gates `v1.2.1` zu publizieren. Ein publiziertes Artefakt wird
 niemals überschrieben; jede weitere Veröffentlichung benötigt eine neue Paketversion und
 einen dazu passenden Tag.

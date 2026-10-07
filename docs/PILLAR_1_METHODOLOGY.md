@@ -1,5 +1,7 @@
 # 3. Methodik der Säule 1 und regulatorischer Kapitalbedarf
 
+Version 1.2.1: [IRB default correction and API migration](IRB_DEFAULT_CORRECTION.md).
+
 ## Methodischer Rahmen
 
 Die Säule-1-Rechnung ist positionsorientiert. Jede atomare Position wird
