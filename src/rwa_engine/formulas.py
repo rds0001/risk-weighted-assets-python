@@ -11,6 +11,7 @@ from math import exp, log, sqrt
 from statistics import NormalDist
 from typing import Sequence
 
+from .irb import resolve
 from .parameters import ParameterStore
 
 NORM = NormalDist()
@@ -154,6 +155,8 @@ def irb_correlation(
 
 
 def retail_correlation(pd: float, subclass: str, *, params: ParameterStore) -> float:
+    if subclass not in {"RETAIL_RESIDENTIAL", "RETAIL_QRRE", "RETAIL_OTHER", "OTHER_RETAIL"}:
+        raise ValueError(f"Unsupported retail subclass: {subclass}")
     if subclass == "RETAIL_RESIDENTIAL":
         return params.get("IRB_RETAIL", "RESIDENTIAL_R")
     if subclass == "RETAIL_QRRE":
@@ -185,9 +188,11 @@ def irb_k(
     defaulted: bool,
     elbe: float,
     params: ParameterStore,
+    lgd_treatment: str | None = None,
 ) -> float:
-    if defaulted or pd >= 1.0:
-        return max(lgd - elbe, 0.0)
+    pd, default_k, _ = resolve(pd, lgd, defaulted, elbe, lgd_treatment)
+    if default_k is not None:
+        return default_k
     if pd <= 0:
         return 0.0
     z = normal_ppf(pd) / sqrt(1.0 - correlation) + sqrt(correlation / (1.0 - correlation)) * normal_ppf(

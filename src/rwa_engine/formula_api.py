@@ -137,11 +137,17 @@ def irb_capital_requirement(
     pd: float, lgd: float, correlation: float, maturity: float, *,
     apply_maturity_adjustment: bool = True, defaulted: bool = False, elbe: float = 0.0,
     parameters: ParameterStore | pd.DataFrame | None = None,
+    lgd_treatment: str | None = None,
 ) -> float:
-    """Return the IRB unexpected-loss capital-requirement rate for one exposure."""
+    """Return K; defaults require SUPERVISORY or OWN_ESTIMATES lgd_treatment.
+
+    Default normalises PD to 1; PD=1 without default is rejected. Supervisory
+    default K is zero and ignores ELBE; own estimates use max(LGD-ELBE, 0).
+    """
     return _f.irb_k(pd, lgd, correlation, maturity,
                     apply_maturity_adjustment=apply_maturity_adjustment,
-                    defaulted=defaulted, elbe=elbe, params=_store(parameters))
+                    defaulted=defaulted, elbe=elbe, params=_store(parameters),
+                    lgd_treatment=lgd_treatment)
 
 
 def sa_ccr_multiplier_value(V: float, C: float, addon: float, *,

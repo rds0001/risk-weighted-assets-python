@@ -25,7 +25,7 @@ from rwa_engine.synthetic import generate_synthetic_tables
 
 
 def main() -> int:
-    assert __version__ == "1.2.0"
+    assert __version__ == "1.2.1"
     assert verify_packaged_resources()["datasets"] == 2
     scripts = Path(sys.executable).parent
     subprocess.run([scripts / "rwa", "--version"], check=True)

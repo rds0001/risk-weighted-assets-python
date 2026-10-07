@@ -2,6 +2,15 @@
 
 All notable public changes are documented here. Dates use ISO 8601.
 
+## 1.2.1 — 2026-10-07
+
+- Fixed supervisory-LGD FIRB defaults: K/RW/RWEA = 0 and EL = LGD × EAD.
+- Unified default/PD/LGD-treatment resolution for formula and portfolio APIs.
+- Default formula calls now require explicit `lgd_treatment`; ambiguous inputs,
+  unsupported approaches/subclasses and FIRB retail are rejected.
+- Added PD-input audit columns, cross-language default/capital regressions and
+  [migration documentation](docs/IRB_DEFAULT_CORRECTION.md).
+
 ## 1.2.0 — 2026-09-19
 
 - Added explicit, auditable IRB SME/infrastructure support and combined application.
