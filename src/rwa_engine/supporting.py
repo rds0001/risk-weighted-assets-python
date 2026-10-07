@@ -6,6 +6,8 @@ from math import isclose, isfinite
 
 import pandas as pd
 
+from .booleans import regulatory_bool
+
 SUPPORT_FIELDS = {
     "sme_supporting_eligible": None,
     "infrastructure_supporting_eligible": None,
@@ -96,7 +98,9 @@ def resolve_support(row, params, *, approach):
     status = "NONE"
     effective_type = "NONE"
     if sme or infra:
-        if _flag(row.get("default_flag")):
+        # Partial parameter rows lack exposure context during input validation.
+        # At calculation time the joined exposure supplies its canonical bool.
+        if "default_flag" in row and regulatory_bool(row["default_flag"], "default_flag"):
             raise ValueError("Supporting factors are not allowed on defaulted exposures")
         if not reference or not approver:
             raise ValueError("Supporting factor requires reference and approved_by")

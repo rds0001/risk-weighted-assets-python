@@ -46,6 +46,6 @@ Werten eingerichtet werden:
 - Workflow filename: `publish.yml`
 - Environment name: `pypi`
 
-Für die FIRB-Korrektur ist nach bestandenen Release-Gates `v1.2.1` zu publizieren. Ein publiziertes Artefakt wird
+Für die Default-Flag-Korrektur ist nach bestandenen Release-Gates `v1.2.2` zu publizieren. Ein publiziertes Artefakt wird
 niemals überschrieben; jede weitere Veröffentlichung benötigt eine neue Paketversion und
 einen dazu passenden Tag.

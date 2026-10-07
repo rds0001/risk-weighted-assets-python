@@ -1,5 +1,7 @@
 # Risk-Weighted Assets
 
+Version 1.2.2: [Canonical default flags and regression cases](docs/DEFAULT_FLAG_NORMALIZATION.md).
+
 Version 1.2.1: [IRB default correction and API migration](docs/IRB_DEFAULT_CORRECTION.md).
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
@@ -38,7 +40,7 @@ explained in [Supporting factors](docs/SUPPORTING_FACTORS.md).
 Python 3.10 or newer is required. Install a locally built wheel with:
 
 ```bash
-python -m pip install dist/risk_weighted_assets-1.2.1-py3-none-any.whl
+python -m pip install dist/risk_weighted_assets-1.2.2-py3-none-any.whl
 ```
 
 Install the latest published release from PyPI with:

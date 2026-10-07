@@ -2,6 +2,14 @@
 
 All notable public changes are documented here. Dates use ISO 8601.
 
+## 1.2.2 — 2026-10-07
+
+- Fixed inconsistent default_flag parsing between Standardised Approach and IRB.
+  Accepted representations are normalised once and shared by SA, IRB, KSA and
+  output-floor calculations; missing or ambiguous flags now fail closed.
+- Added SA_Detail.defaulted and shared Python/R public-API regression vectors.
+- See [the input contract and reference cases](docs/DEFAULT_FLAG_NORMALIZATION.md).
+
 ## 1.2.1 — 2026-10-07
 
 - Fixed supervisory-LGD FIRB defaults: K/RW/RWEA = 0 and EL = LGD × EAD.
