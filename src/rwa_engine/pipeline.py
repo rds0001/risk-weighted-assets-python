@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 
 from . import __version__
+from .booleans import normalise_exposure_defaults
 from .engines import (
     CalculationBundle,
     CalculationContext,
@@ -497,6 +498,7 @@ def run_dataset(dataset_dir: Path) -> Path:
     knowledge = datetime.fromisoformat(cfg["knowledge_time"])
     snapshot = {name: select_official_as_of(frame, as_of, knowledge) for name, frame in raw.items()}
     snapshot = _apply_official_designations(raw, snapshot)
+    snapshot = normalise_exposure_defaults(snapshot)
     digest = _input_hash(input_dir)
     code_digest = _code_hash()
     fingerprint = sha256(f"{digest}:{code_digest}:{__version__}".encode("utf-8")).hexdigest()

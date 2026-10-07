@@ -11,7 +11,8 @@ import numpy as np
 import pandas as pd
 
 from . import formulas as f
-from .irb import default_flag, effective_pd, resolve, treatment_for
+from .booleans import normalise_exposure_defaults
+from .irb import effective_pd, resolve, treatment_for
 from .parameters import ParameterStore
 from .supporting import resolve_for_exposure
 
@@ -68,7 +69,9 @@ class CalculationBundle:
 
 def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out: CalculationBundle) -> None:
     p = ctx.parameters
-    exp_df = t["exposure_lot"].copy()
+    # Resolve each selected exposure once, before either SA or IRB branches.
+    t = normalise_exposure_defaults(t)
+    exp_df = t["exposure_lot"]
     sa = t["sa_classification"].copy()
     re_df = t["real_estate_exposure"].copy()
     irb = t["irb_parameter"].copy()
@@ -120,7 +123,7 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
             short_term=_bool(r["short_term_flag"]),
             transactor=_bool(r["transactor_flag"]),
             retail_eligible=_bool(r["retail_eligible_flag"]),
-            defaulted=_bool(r["default_flag"]),
+            defaulted=r["default_flag"],
             default_coverage_ratio=coverage,
             specialised_lending_type=_text(r.get("specialised_lending_type")),
             params=p,
@@ -160,6 +163,7 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
                 "ccf": p.get("SA_CCF", str(r["annex_i_class"])),
                 "ead": ead,
                 "risk_weight": rw,
+                "defaulted": r["default_flag"],
                 "protected_amount": protected,
                 "substitution_rw": sub_rw,
                 "rwea_pre_crm": rwea_pre,
@@ -208,7 +212,7 @@ def calculate_credit(t: Mapping[str, pd.DataFrame], ctx: CalculationContext, out
         )
         irows = []
         for _, r in base.iterrows():
-            defaulted = default_flag(r["default_flag"])
+            defaulted = r["default_flag"]
             pdv = effective_pd(r["pd_estimate"], defaulted, r["pd_floor"])
             lgd = max(_num(r["lgd_estimate"]), _num(r["lgd_floor"]))
             ead = max(_num(r["ead_estimate"]), _num(r["ead_floor"]))

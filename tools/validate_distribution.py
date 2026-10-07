@@ -38,7 +38,7 @@ def validate_wheel(path: Path) -> dict[str, int]:
         _assert(len(metadata_names) == 1, "wheel must contain exactly one METADATA file")
         metadata = BytesParser(policy=default).parsebytes(archive.read(metadata_names[0]))
         _assert(metadata["Name"] == "risk-weighted-assets", "unexpected distribution name")
-        _assert(metadata["Version"] == "1.2.1", "unexpected distribution version")
+        _assert(metadata["Version"] == "1.2.2", "unexpected distribution version")
         _assert(metadata["License-Expression"] == "GPL-3.0-only", "SPDX license expression missing")
         _assert("riskdatascience@web.de" in str(metadata["Author-email"]), "author email missing")
         project_urls = set(metadata.get_all("Project-URL", []))
@@ -97,6 +97,8 @@ def validate_sdist(path: Path) -> dict[str, int]:
         "/docs/GRANULAR_ANALYST_API.md",
         "/tests/test_granular_analyst_api.py",
         "/tests/test_public_api.py",
+        "/tests/test_default_flags.py",
+        "/tests/fixtures/regulatory_boolean_cases.csv",
         "/tools/validate_distribution.py",
         "/src/rwa_engine/resources/Standards/00_manifest/sources.json",
     }

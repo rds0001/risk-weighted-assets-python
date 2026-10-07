@@ -15,6 +15,7 @@ from typing import Mapping
 import pandas as pd
 
 from . import __version__
+from .booleans import normalise_exposure_defaults
 from .engines import CalculationContext
 from .excel_io import ValidationIssue, read_input_workbooks, select_official_as_of, validate_tables
 from .exceptions import CalculationError, ValidationError
@@ -101,6 +102,9 @@ def calculate_tables(
 
     Overrides never mutate caller data and require both a business reason and an
     approver. The returned result carries the complete old/new-value audit trail.
+    Exposure default_flag values are normalised once on the selected snapshot;
+    unknown or missing flags fail closed. Both SA_Detail and IRB_Detail expose
+    the effective boolean as defaulted, shared across both reporting views.
     """
     source: Mapping[str, pd.DataFrame] = tables
     if parameter_overrides is not None:
@@ -122,6 +126,7 @@ def calculate_tables(
         knowledge = datetime.fromisoformat(cfg["knowledge_time"])
         snapshot = {name: select_official_as_of(frame, as_of, knowledge) for name, frame in raw.items()}
         snapshot = _apply_official_designations(raw, snapshot)
+        snapshot = normalise_exposure_defaults(snapshot)
         fingerprint = sha256(f"{_tables_hash(raw)}:{_code_hash()}:{__version__}".encode("utf-8")).hexdigest()
         effective_run_id = run_id or f"RUN-{as_of.strftime('%Y%m%d')}-{fingerprint[:10].upper()}"
         parameters = ParameterStore(snapshot["regulatory_parameter"])

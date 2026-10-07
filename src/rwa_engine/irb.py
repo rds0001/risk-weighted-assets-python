@@ -1,14 +1,12 @@
 """Shared, fail-closed IRB default and LGD-treatment contract."""
 from math import isfinite
 
+from .booleans import regulatory_bool
+
 
 def default_flag(value):
-    text = str(value).strip().upper()
-    if text in {"TRUE", "1", "1.0", "YES", "JA"}:
-        return True
-    if text in {"FALSE", "0", "0.0", "NO", "NEIN"}:
-        return False
-    raise ValueError("default_flag must be an explicit boolean")
+    """Compatibility alias; there is only one regulatory boolean contract."""
+    return regulatory_bool(value, "default_flag")
 
 
 def rate(value, name):

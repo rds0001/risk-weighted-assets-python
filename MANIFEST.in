@@ -3,6 +3,6 @@ recursive-include docs *.md
 recursive-include examples *.py *.md
 recursive-include src/rwa_engine/resources *
 recursive-include src/rwa_engine/web/static *
-recursive-include tests *.py
+recursive-include tests *.py *.csv
 recursive-include tools *.py
 global-exclude *.py[cod] __pycache__ .DS_Store
